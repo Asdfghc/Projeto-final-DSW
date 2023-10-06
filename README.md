@@ -1,8 +1,7 @@
 # Projeto so de teste pra aprender laravel
 
-SETUP
 
-### Passo a passo
+### SETUP Passo a passo
 Clone Repositório
 ```sh
 git clone -b main https://github.com/Asdfghc/proj-teste-laravel.git app-laravel

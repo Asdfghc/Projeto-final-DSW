@@ -15,13 +15,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('listamentos');
 });
+//http://localhost:8989/
 
 Route::get('/horas/{h}', function ($h) {
     return response('Eu perdi ' . $h . ' horas da minha vida aprendendo Laravel sendo q nem existe mais php', 200)
         ->header('Content-Type', 'text/plain');
 })->where('h', '[0-9]+');
+//http://localhost:8989/horas/10
 
 Route::get('/search', function(Request $request) {
     return $request->name . ' ' .$request->city;
