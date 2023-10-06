@@ -1,11 +1,6 @@
+# Projeto so de teste pra aprender laravel
 
-Projeto so de teste pra aprender laravel
-
-
-
-
-# Setup Docker Laravel 10 com PHP 8.1
-[Assine a Academy, e Seja VIP!](https://academy.especializati.com.br)
+SETUP
 
 ### Passo a passo
 Clone Repositório
