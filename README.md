@@ -1,4 +1,6 @@
-# Projeto so de teste pra aprender laravel
+# Projeto final de Desenvolvimento de Sistemas Web
+
+(Descrição)
 
 
 ### SETUP Passo a passo
