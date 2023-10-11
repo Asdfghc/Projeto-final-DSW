@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Reserva;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -15,17 +16,33 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('listamentos');
+    return view('inicial');
 });
-//http://localhost:8989/
 
-Route::get('/horas/{h}', function ($h) {
-    return response('Eu perdi ' . $h . ' horas da minha vida aprendendo Laravel sendo q nem existe mais php', 200)
-        ->header('Content-Type', 'text/plain');
-})->where('h', '[0-9]+');
-//http://localhost:8989/horas/10
-
-Route::get('/search', function(Request $request) {
-    return $request->name . ' ' .$request->city;
+Route::get('/login', function () {
+    return view('login');
 });
-//http://localhost:8989/search?name=nome&city=cidade
+
+Route::get('/cadastro', function () {
+    return view('cadastro');
+});
+
+Route::get('/agendamento', function () {
+    return view('agedamento');
+});
+
+Route::get('/reservas', function () {
+    return view('reservas', ['reservas' => Reserva::all()]);
+});
+
+Route::get('/reserva{id}', function ($id) {
+    return view('reserva', ['reserva' => Reserva::find($id)]);
+});
+
+Route::get('/confirmacao/{id}', function ($id) {
+    return view('confirmacao', ['id' => $id]);
+});
+
+Route::get('/pesquisa', function () {
+    return view('pesquisa');
+});
