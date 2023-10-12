@@ -13,12 +13,13 @@ return new class extends Migration
     {
         Schema::create('reservas', function (Blueprint $table) {
             $table->id();
+            //$table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('nome');
-            $table->string('data');
-            $table->string('hora');
-            $table->string('servico');
-            $table->string('nconvidados');
-            $table->string('idade');
+            $table->dateTimeTz('dataehora');
+            $table->longText('servico');
+            $table->integer('nconvidados');
+            $table->integer('idade');
+            $table->string('status');
             $table->timestamps();
         });
     }

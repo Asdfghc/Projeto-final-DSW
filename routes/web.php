@@ -35,7 +35,7 @@ Route::get('/reservas', function () {
     return view('reservas', ['reservas' => Reserva::all()]);
 });
 
-Route::get('/reserva{id}', function ($id) {
+Route::get('/reserva/{id}', function ($id) {
     return view('reserva', ['reserva' => Reserva::find($id)]);
 });
 
