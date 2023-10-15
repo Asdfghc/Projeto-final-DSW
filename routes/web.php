@@ -1,8 +1,9 @@
 <?php
 
-use App\Models\Reserva;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ReservaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,25 +20,20 @@ Route::get('/', function () {
     return view('inicial');
 });
 
-Route::get('/login', function () {
-    return view('login');
-});
+Route::get('/agendamento', [ReservaController::class, 'create']);
 
-Route::get('/cadastro', function () {
-    return view('cadastro');
-});
+Route::get('/reservas', [ReservaController::class, 'index']);
 
-Route::get('/agendamento', function () {
-    return view('agedamento');
-});
+Route::post('/reserva', [ReservaController::class, 'store']);
 
-Route::get('/reservas', function () {
-    return view('reservas', ['reservas' => Reserva::all()]);
-});
+Route::get('/reserva/{id}', [ReservaController::class, 'show']);
 
-Route::get('/reserva/{id}', function ($id) {
-    return view('reserva', ['reserva' => Reserva::find($id)]);
-});
+
+Route::get('/login', [UserController::class, 'login']);
+
+Route::get('/cadastro', [UserController::class, 'create']);
+
+Route::post('/users', [UserController::class, 'store']);
 
 Route::get('/confirmacao/{id}', function ($id) {
     return view('confirmacao', ['id' => $id]);

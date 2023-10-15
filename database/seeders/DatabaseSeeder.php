@@ -16,24 +16,22 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\User::factory(1)->create();
-
         User::create([
-            'name' => 'admin',
-            'email' => 'admin@staff.com',
-            'password' => 'admin',
+            'name' => 'administrador',
+            'email' => 'administrador@staff.com',
+            'password' => 'administrador'
         ]);
 
         User::create([
             'name' => 'comercial',
             'email' => 'comercial@staff.com',
-            'password' => 'comercial',
+            'password' => 'comercial'
         ]);
 
         User::create([
             'name' => 'operacional',
             'email' => 'operacional@staff.com',
-            'password' => 'operacional',
+            'password' => 'operacional'
         ]);
 
         Convidado::create([
@@ -43,24 +41,5 @@ class DatabaseSeeder extends Seeder
             'idade' => '18'
         ]);
 
-        Reserva::create([
-            //'user_id' => '42',
-            'nome' => 'Test User',
-            'dataehora' => '2021-10-12 11:00:00',
-            'servico' => 'Corte',
-            'nconvidados' => '1',
-            'idade' => '18',
-            'status' => 'pendente'
-        ]);
-
-        Reserva::create([
-            //'user_id' => '42',
-            'nome' => 'Test User2',
-            'dataehora' => '2022-10-12 11:00:00',
-            'servico' => 'Corte?',
-            'nconvidados' => '10',
-            'idade' => '180',
-            'status' => 'pendente'
-        ]);
     }
 }

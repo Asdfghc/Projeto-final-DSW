@@ -15,11 +15,12 @@ return new class extends Migration
             $table->id();
             //$table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('nome');
-            $table->dateTimeTz('dataehora');
+            $table->dateTimeTz('dataehora_inicio');
+            $table->dateTimeTz('dataehora_fim');
             $table->longText('servico');
             $table->integer('nconvidados');
             $table->integer('idade');
-            $table->string('status');
+            $table->string('status')->default('pendente');
             $table->timestamps();
         });
     }
