@@ -31,9 +31,13 @@ Route::get('/reserva/{id}', [ReservaController::class, 'show']);
 
 Route::get('/login', [UserController::class, 'login']);
 
+Route::post('/users/login', [UserController::class, 'authenticate']);
+
 Route::get('/cadastro', [UserController::class, 'create']);
 
 Route::post('/users', [UserController::class, 'store']);
+
+Route::post('/logout', [UserController::class, 'logout']);
 
 Route::get('/confirmacao/{id}', function ($id) {
     return view('confirmacao', ['id' => $id]);

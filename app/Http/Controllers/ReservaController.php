@@ -35,6 +35,6 @@ class ReservaController extends Controller
 
         Reserva::create($formFields);
 
-        return redirect('/reservas');
+        return redirect('/reservas')->with('mensagem', 'Reserva cadastrada com sucesso!');
     }
 }

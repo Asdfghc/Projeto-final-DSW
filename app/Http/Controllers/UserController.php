@@ -13,6 +13,23 @@ class UserController extends Controller
         return view('users/login');
     }
 
+    // Autenticar usuário
+    public function authenticate(Request $request) {
+        $formFields = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required']
+        ]);
+
+        if (auth()->attempt($formFields)) {
+            $request->session()->regenerate();
+            return redirect('/')->with('mensagem', 'Login realizado com sucesso!');
+        }
+
+        return back()->withErrors([
+            'email' => 'As credenciais informadas não foram encontradas em nosso sistema.'
+        ])->onlyInput('email');
+    }
+
     // Mostrar formulário de cadastro
     public function create() {
         return view('users/create');
@@ -21,17 +38,26 @@ class UserController extends Controller
     // Salvar usuário no banco de dados
     public function store(Request $request) {
         $formFields = $request->validate([
-            'nome' => ['required', 'min:3'],
+            'name' => ['required', 'min:3'],
             'email' => ['required', 'email', Rule::unique('users', 'email')],
-            'senha' => ['required|confirmed|min:6']
+            'password' => ['required', 'confirmed', 'min:6']
         ]);
 
-        $formFields['senha'] = bcrypt($formFields['senha']);
+        $formFields['password'] = bcrypt($formFields['password']);
 
         $user = User::create($formFields);
 
         auth()->login($user);
 
-        return redirect('/');
+        return redirect('/')->with('mensagem', 'Usuário cadastrado com sucesso!');
+    }
+
+    // Fazer logout
+    public function logout(Request $request) {
+        auth()->logout();
+        
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/')->with('mensagem', 'Logout realizado com sucesso!');
     }
 }

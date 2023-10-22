@@ -1,5 +1,4 @@
 <x-layout>
-    @include('partials/_hero')
     <div>
         @unless (count($reservas) == 0)
             
