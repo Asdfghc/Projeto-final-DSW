@@ -27,7 +27,7 @@
         <div>
             <p>
                 Não tem uma conta?
-                <a href="/login">Fazer cadastro</a>
+                <a href="/cadastro">Fazer cadastro</a>
             </p>
         </div>
     </form>

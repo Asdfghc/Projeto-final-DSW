@@ -15,7 +15,8 @@ class Reserva extends Model
         'dataehora_fim',
         'servico',
         'nconvidados',
-        'idade'];
+        'idade',
+        'user_id'];
 
     // Relação com o usuário
     public function user() {

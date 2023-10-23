@@ -104,7 +104,7 @@
   </div>
   <div class="agende">
    <ul class="myUL">
-    <li><a href="/agendamento" target="_blank" class="agende" style="text-align: center;">Agende sua festa</a></li>
+    <li><a href="/agendamento" class="agende" style="text-align: center;">Agende sua festa</a></li>
    </ul>
   </div> 
 </x-layout>

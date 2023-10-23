@@ -9,11 +9,16 @@ class ReservaController extends Controller
 {
     // Mostrar todas as reservas
     public function index() {
-        return view('reservas/index', ['reservas' => Reserva::all()]);
+        //return view('reservas/index', ['reservas' => Reserva::all()]);
+        return view('reservas/index', ['reservas' => Reserva::where('user_id', auth()->id())->get()]);
     }
 
     // Mostrar uma reserva específica
     public function show(Reserva $id) {
+        if($id->user_id != auth()->id()) {
+            return redirect('/reservas');
+        }
+
         return view('reservas/show', ['reserva' => $id]);
     }
 
