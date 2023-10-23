@@ -6,7 +6,7 @@
 ### SETUP Passo a passo
 Clone Repositório
 ```sh
-git clone -b main https://github.com/Asdfghc/proj-teste-laravel.git app-laravel
+git clone -b main https://github.com/Asdfghc/Proj-final-DSW.git app-laravel
 ```
 ```sh
 cd app-laravel
