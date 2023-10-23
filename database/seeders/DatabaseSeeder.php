@@ -34,12 +34,12 @@ class DatabaseSeeder extends Seeder
             'password' => 'operacional'
         ]);
 
-        Convidado::create([
-            //'user_id' => '42',
-            'name' => 'Test User',
-            'CPF' => '12345678910',
-            'idade' => '18'
-        ]);
+        //Convidado::create([
+        ////'user_id' => '42',
+        //    'name' => 'Test User',
+        //    'CPF' => '12345678910',
+        //    'idade' => '18'
+        //]);
 
     }
 }

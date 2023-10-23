@@ -15,6 +15,10 @@ class Reserva extends Model
         'dataehora_fim',
         'servico',
         'nconvidados',
-        'idade',
-        'status'];
+        'idade'];
+
+    // Relação com o usuário
+    public function user() {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

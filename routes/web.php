@@ -20,24 +20,24 @@ Route::get('/', function () {
     return view('inicial');
 });
 
-Route::get('/agendamento', [ReservaController::class, 'create']);
+Route::get('/agendamento', [ReservaController::class, 'create'])->middleware('auth');
 
-Route::get('/reservas', [ReservaController::class, 'index']);
+Route::get('/reservas', [ReservaController::class, 'index'])->middleware('auth');
 
-Route::post('/reserva', [ReservaController::class, 'store']);
+Route::post('/reserva', [ReservaController::class, 'store'])->middleware('auth');
 
-Route::get('/reserva/{id}', [ReservaController::class, 'show']);
+Route::get('/reserva/{id}', [ReservaController::class, 'show'])->middleware('auth');
 
 
-Route::get('/login', [UserController::class, 'login']);
+Route::get('/login', [UserController::class, 'login'])->name('login')->middleware('guest');
 
-Route::post('/users/login', [UserController::class, 'authenticate']);
+Route::post('/users/login', [UserController::class, 'authenticate'])->middleware('guest');
 
-Route::get('/cadastro', [UserController::class, 'create']);
+Route::get('/cadastro', [UserController::class, 'create'])->middleware('guest');
 
-Route::post('/users', [UserController::class, 'store']);
+Route::post('/users', [UserController::class, 'store'])->middleware('guest');
 
-Route::post('/logout', [UserController::class, 'logout']);
+Route::post('/logout', [UserController::class, 'logout'])->middleware('auth');
 
 Route::get('/confirmacao/{id}', function ($id) {
     return view('confirmacao', ['id' => $id]);

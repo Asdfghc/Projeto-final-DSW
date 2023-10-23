@@ -33,8 +33,11 @@ class ReservaController extends Controller
             'idade' => 'required'
         ]);
 
+        $formFields['user_id'] = auth()->id(); // TODO: consertar
+
         Reserva::create($formFields);
 
         return redirect('/reservas')->with('mensagem', 'Reserva cadastrada com sucesso!');
     }
+
 }

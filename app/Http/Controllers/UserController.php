@@ -60,4 +60,5 @@ class UserController extends Controller
         $request->session()->regenerateToken();
         return redirect('/')->with('mensagem', 'Logout realizado com sucesso!');
     }
+
 }
