@@ -6,7 +6,7 @@
 ### SETUP Passo a passo
 Clone Repositório
 ```sh
-git clone -b main https://github.com/Asdfghc/proj-teste-laravel.git app-laravel
+git clone -b Producao https://github.com/Asdfghc/Projeto-final-DSW.git app-laravel
 ```
 ```sh
 cd app-laravel
@@ -64,6 +64,9 @@ Gere a key do projeto Laravel
 php artisan key:generate
 ```
 
+*resetar conteineres caso n tenha ido ainda
+*php artisan migrate
+*php artisan db:seed
 
 Acesse o projeto
 [http://localhost:8989](http://localhost:8989)
