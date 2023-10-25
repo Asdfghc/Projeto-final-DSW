@@ -104,7 +104,17 @@
   </div>
   <div class="agende">
    <ul class="myUL">
-    <li><a href="/agendamento" class="agende" style="text-align: center;">Agende sua festa</a></li>
+    @hasanyrole('admin|comerc')
+      <li><a href="/Html/Fazendinha/Fazendinha_Agenda.html" class="agende">Agenda</a></li>
+      <li><a href="/Html/Fazendinha/Fazendinha_Comida.html" class="agende">Pacotes de Comida</a></li>
+      <li><a href="/Html/Fazendinha/Fazendinha_Solicitacoes.html" class="agende">Pedidos</a></li>
+    @endhasanyrole
+    @role('ope')
+      <li><a href="/Html/Fazendinha/Fazendinha_Lista.html" class="agende">Lista de Festas</a></li>
+    @endrole
+    @role('user')
+      <li><a href="/agendamento" class="agende" style="text-align: center;">Agende sua festa</a></li>
+    @endrole
    </ul>
   </div> 
 </x-layout>

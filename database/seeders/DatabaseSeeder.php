@@ -4,10 +4,13 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-use App\Models\Convidado;
 use App\Models\User;
 use App\Models\Reserva;
+use App\Models\Convidado;
 use Illuminate\Database\Seeder;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\PermissionRegistrar;
 
 class DatabaseSeeder extends Seeder
 {
@@ -16,23 +19,32 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        User::create([
-            'name' => 'administrador',
-            'email' => 'administrador@staff.com',
-            'password' => 'administrador'
-        ]);
+        app()[PermissionRegistrar::class]->forgetCachedPermissions();
 
-        User::create([
-            'name' => 'comercial',
-            'email' => 'comercial@staff.com',
-            'password' => 'comercial'
+        Role::create(['name' => 'user']);
+        Role::create(['name' => 'admin']);
+        Role::create(['name' => 'comerc']);
+        Role::create(['name' => 'ope']);
+        $user = User::factory()->create([
+            'name' => 'admin',
+            'email' => 'admin@staff.com',
+            'password' => bcrypt('admin')
         ]);
+        $user->assignRole('admin');
 
-        User::create([
-            'name' => 'operacional',
-            'email' => 'operacional@staff.com',
-            'password' => 'operacional'
+        $user = User::create([
+            'name' => 'comerc',
+            'email' => 'comerc@staff.com',
+            'password' => bcrypt('comerc')
         ]);
+        $user->assignRole('comerc');
+
+        $user = User::create([
+            'name' => 'ope',
+            'email' => 'ope@staff.com',
+            'password' => bcrypt('ope')
+        ]);
+        $user->assignRole('ope');
 
         //Convidado::create([
         ////'user_id' => '42',

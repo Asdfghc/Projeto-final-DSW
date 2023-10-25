@@ -67,7 +67,7 @@
           <li><a href="/cadastro" class="reg">Registrar-se</a></li>
           <li><a href="/login" class="reg">Login</a></li>
         @endauth
-          <a href="/" target="_blank"><img src="images/pato.png" style="float: inline-start; width:60px; height: 30px;padding: 15px; padding-top: 15px;"></a>
+          <a href="/"><img src="images/pato.png" style="float: inline-start; width:60px; height: 30px;padding: 15px; padding-top: 15px;"></a>
       </ul>
       </div>
   </div>
