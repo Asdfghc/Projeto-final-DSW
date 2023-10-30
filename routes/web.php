@@ -28,6 +28,12 @@ Route::post('/reserva', [ReservaController::class, 'store'])->middleware('auth')
 
 Route::get('/reserva/{id}', [ReservaController::class, 'show'])->middleware('auth');
 
+Route::get('/reserva/{id}/edit', [ReservaController::class, 'edit'])->middleware('auth');
+
+Route::put('/reserva/{id}', [ReservaController::class, 'update'])->middleware('auth');
+
+Route::delete('/reserva/{id}', [ReservaController::class, 'destroy'])->middleware('auth');
+
 
 Route::get('/login', [UserController::class, 'login'])->name('login')->middleware('guest');
 

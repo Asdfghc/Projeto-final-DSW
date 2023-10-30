@@ -2,20 +2,31 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Reserva;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class ReservaController extends Controller
 {
     // Mostrar todas as reservas
     public function index() {
-        //return view('reservas/index', ['reservas' => Reserva::all()]);
-        return view('reservas/index', ['reservas' => Reserva::where('user_id', auth()->id())->get()]);
+        $user = User::find(auth()->id());
+        if ($user->hasRole('user')) {
+            return view('reservas/index', ['reservas' => Reserva::where('user_id', auth()->id())->get()]);
+        }
+        elseif ($user->hasRole('ope')) {
+            return redirect('/');
+        }
+        else {
+            return view('reservas/index', ['reservas' => Reserva::all()]);
+        }
     }
 
     // Mostrar uma reserva específica
     public function show(Reserva $id) {
-        if($id->user_id != auth()->id()) {
+        $user = User::find(auth()->id());
+        if($id->user_id != auth()->id() && ($user->hasRole('user')) || $user->hasRole('ope')) {
             return redirect('/reservas');
         }
 
@@ -38,11 +49,44 @@ class ReservaController extends Controller
             'idade' => 'required'
         ]);
 
-        $formFields['user_id'] = auth()->id(); // TODO: consertar
+        $formFields['user_id'] = auth()->id();
 
         Reserva::create($formFields);
 
         return redirect('/reservas')->with('mensagem', 'Reserva cadastrada com sucesso!');
+    }
+
+    // Mostrar formulário de edição de reserva
+    public function edit(Reserva $id) {
+        $user = User::find(auth()->id());
+        if($id->user_id != auth()->id() && ($user->hasRole('user')) || $user->hasRole('ope')) {
+            return redirect('/reservas');
+        }
+
+        return view('reservas/edit', ['reserva' => $id]);
+    }
+
+    // Atualizar reserva no banco de dados
+    public function update(Request $request, Reserva $id) {
+        $formFields = $request->validate([
+            'servico' => 'required'
+        ]);
+
+        $id->update($formFields);
+
+        return redirect('/reservas')->with('mensagem', 'Reserva atualizada com sucesso!');
+    }
+
+    // Remover reserva do banco de dados
+    public function destroy(Reserva $id) {
+        $user = User::find(auth()->id());
+        if($id->user_id != auth()->id() && ($user->hasRole('user')) || $user->hasRole('ope')) {
+            return redirect('/reservas');
+        }
+
+        $id->delete();
+
+        return redirect('/reservas')->with('mensagem', 'Reserva removida com sucesso!');
     }
 
 }
