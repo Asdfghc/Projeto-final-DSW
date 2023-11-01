@@ -141,7 +141,9 @@
             <button href="/logout" class="sair">Sair</button>
             @endhasanyrole
           </form>
+          @unlessrole('admin|comerc|ope')
           <li><a href="/reservas">Minhas Compras</a></li>
+          @endunless
           <li style="padding: 15px; padding-top: 15px;">Bem vindo(a) {{ auth()->user()->name }}</li>
           @else
             <li><a href="/cadastro">Registrar-se</a></li>

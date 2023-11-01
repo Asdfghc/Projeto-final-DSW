@@ -112,9 +112,9 @@
   <div class="agende">
     @hasanyrole('admin|comerc')
     <ul class="myUL">
-      <li><a href="/Html/Fazendinha/Fazendinha_Agenda.html" class="agende">Agenda</a></li>
-      <li><a href="/Html/Fazendinha/Fazendinha_Comida.html" class="agende">Pacotes de Comida</a></li>
-      <li><a href="/Html/Fazendinha/Fazendinha_Solicitacoes.html" class="agende">Pedidos</a></li>
+      <li><a href="/agenda" class="agende">Agenda</a></li>
+      <li><a href="/pacotes" class="agende">Pacotes de Comida</a></li>
+      <li><a href="/reservas" class="agende">Pedidos</a></li>
     </ul>
     @endhasanyrole
     @role('ope')
