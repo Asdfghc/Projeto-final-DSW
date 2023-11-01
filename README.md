@@ -21,7 +21,7 @@ cp .env.example .env
 
 Atualize as variáveis de ambiente do arquivo .env
 ```dosini
-APP_NAME=EspecializaTi
+APP_NAME=Larave
 APP_URL=http://localhost:8989
 
 DB_CONNECTION=mysql
@@ -58,15 +58,20 @@ Instale as dependências do projeto
 composer install
 ```
 
+Instale o pacote de cargos
+```sh
+composer require spatie/laravel-permission
+```
 
 Gere a key do projeto Laravel
 ```sh
 php artisan key:generate
 ```
 
-*resetar conteineres caso n tenha ido ainda
-*php artisan migrate
-*php artisan db:seed
+Faça as migrações e seeding
+```sh
+php artisan migrate --seed
+```
 
 Acesse o projeto
 [http://localhost:8989](http://localhost:8989)
