@@ -8,7 +8,7 @@
                 
             @endforeach
         @else
-            <p>Você não possui reservas</p>
+            <p>Você não possui reservas 😭</p>
         @endunless
     </div>
 </x-layout>
