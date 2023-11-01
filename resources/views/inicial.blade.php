@@ -1,6 +1,7 @@
 <x-layout>
   <style>
     body {
+      @unlessrole('admin|comerc|ope')
       background-image: url('images/fazenda.png');
       background-repeat: no-repeat;
       background-size: cover;
@@ -12,28 +13,29 @@
       width: 100%;
       height: 100%;
       box-shadow: 0 0 250px rgba(0,0,0,0.9) inset;
+      @endunlessrole
+      @hasanyrole('admin|comerc|ope')
+      background-image: none;
+      background-color: antiquewhite;
+      @endhasanyrole
     }
-
     .nome {
       font-size: 45px;
       position: absolute;
       top: 30%;
       left: 50%;
-      transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%); 
     }
-
     .placa {
-      position: relative;
+      position: relative; 
       text-align: center;
       color: white;
     }
-
     .nuvens {
       position: relative;
       text-align: center;
       color: black;
     }
-
     .nuvem1 {
       position: absolute;
       top: 53%;
@@ -41,7 +43,6 @@
       transform: translate(-50%, -50%);
       font-size: 20px;
     }
-
     .nuvem2 {
       position: absolute;
       top: 53%;
@@ -49,23 +50,27 @@
       transform: translate(-50%, -50%);
       font-size: 20px;
     }
-
     .comida {
       position: absolute;
       text-align: center;
     }
-
     ul.myUL {
       display: inline-block;
       position: absolute;
       top: 80%;
       left: 50%;
       transform: translate(-50%, -50%);
+      @hasanyrole('admin|comerc|ope')
+      display: inline-block;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      @endhasanyrole
     }
-
     .agende {
-      display: block;
-      margin: 0;
+      display: inline-block;
+      margin: 5px;
       text-align: center;
       font-size: 20px;
       color: gold;
@@ -73,6 +78,7 @@
       border-radius: 25px;
     }
   </style>
+  @unlessrole('admin|comerc|ope')
   <br>
   <div class="placa">
     <img src="images/placa.png" alt="placa">
@@ -95,6 +101,7 @@
     <img src="images/nuvem.png" style="width: 325px; height: 195px;">
     <div class="nuvem2">Verdadeiros Doces <br> de uma Fazenda!</div>
   </div>
+  @endunlessrole
   <br>
   <div>
     <pre>
@@ -103,18 +110,22 @@
     </pre>
   </div>
   <div class="agende">
-   <ul class="myUL">
     @hasanyrole('admin|comerc')
-      <li><a href="/Html/Fazendinha/Fazendinha_Agenda.html" class="agende">Agenda</a></li>
-      <li><a href="/Html/Fazendinha/Fazendinha_Comida.html" class="agende">Pacotes de Comida</a></li>
-      <li><a href="/Html/Fazendinha/Fazendinha_Solicitacoes.html" class="agende">Pedidos</a></li>
+    <ul class="myUL">
+      <li><a href="/agenda" class="agende">Agenda</a></li>
+      <li><a href="/pacotes" class="agende">Pacotes de Comida</a></li>
+      <li><a href="/reservas" class="agende">Pedidos</a></li>
+    </ul>
     @endhasanyrole
     @role('ope')
+    <ul class="myUL">
       <li><a href="/Html/Fazendinha/Fazendinha_Lista.html" class="agende">Lista de Festas</a></li>
+    </ul>
     @endrole
-    @role('user')
+    @unlessrole('admin|comerc|ope')
+    <ul class="myUL">
       <li><a href="/agendamento" class="agende" style="text-align: center;">Agende sua festa</a></li>
-    @endrole
-   </ul>
-  </div> 
+    </ul>
+    @endunlessrole
+  </div>  
 </x-layout>

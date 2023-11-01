@@ -42,10 +42,9 @@
         cursor: pointer;
     }
     button:hover{
-        background-color: #0E0073;
-        color: white;
+      background-color: #0E0073;
+      color: white;
     }
-
     input[type=text] {
         padding: 5px 5px;
         margin: 8px 0;
@@ -56,7 +55,6 @@
         border: 2px solid #0E0073;
         border-radius: 5px;
     }
-
     input[type=email] {
         padding: 5px 5px;
         margin: 8px 0;
@@ -67,7 +65,6 @@
         border: 2px solid #0E0073;
         border-radius: 5px;
     }
-
     input[type=password] {
         padding: 5px 5px;
         margin: 8px 0;
@@ -78,19 +75,21 @@
         border: 2px solid #0E0073;
         border-radius: 5px;
     }
-
     input[type=text]:focus {
         background-color: #C1B0F0;
     }
-
+    input[type=datetime-local]:focus {
+        background-color: #C1B0F0;
+    }
     input[type=email]:focus {
         background-color: #C1B0F0;
     }
-
     input[type=password]:focus {
         background-color: #C1B0F0;
     }
-
+    textarea:focus{
+      background-color: #C1B0F0;
+    }
     .capa{
         display: block;
         background-color: #0E0073;
@@ -100,7 +99,6 @@
         width: 14%;
         padding: 10px;
     }
-
     .topo {
       width: 100%;
       margin: 0;
@@ -108,19 +106,16 @@
       color: white;
       background-color: #003C74;
     }
-
     ul {
       list-style-type: none;
       margin: 0;
       padding: 0;
       overflow: hidden;
     }
-
     li {
       display: block;
       float: right;
     }
-
     li a {
       display: block;
       color: gold;
@@ -128,18 +123,24 @@
       padding: 16px;
       text-decoration: none;
     }
-
     li a:hover {
       background-color: #0E0073;
       color: white;
     }
-
+    .sair{
+      text-decoration: none;
+      display: inline-block;
+      background-color: #003C74;
+      color: gold;
+      font-size: 25px;
+      padding: 18px 15px;
+      border: none;
+    }
     table, th, td {
       border: 1px solid black;
       margin-left: auto;
       margin-right: auto;
     }
-
     th, td {
       background-color: #eee7f7;
       text-align: center;
@@ -148,24 +149,24 @@
   </style>
   <div class="topo">
       <div>
-      <ul>
-        @auth
-          <li>
-            <form class="reg" method="POST" action="/logout">
-              @csrf
-              <button type="submit">
-                <i href="/logout" class="reg"></i>Sair
-              </button>
-            </form>
-          </li>
-          <li><p class="reg"> Bem vindo(a), {{ auth()->user()->name }}</p></li>
-          <li><a href="/reservas" class="reg">Minhas Compras 🛒</a></li>
-        @else
-          <li><a href="/cadastro" class="reg">Registrar-se</a></li>
-          <li><a href="/login" class="reg">Login</a></li>
-        @endauth
-          <a href="/"><img src="images/pato.png" style="float: inline-start; width:60px; height: 30px;padding: 15px; padding-top: 15px;"></a>
-      </ul>
+        <ul>
+          @auth
+          <form method="POST" action="/logout" style="float:inline-end;">
+          @csrf
+            @hasanyrole('admin|comerc|ope|user')
+            <button href="/logout" class="sair">Sair</button>
+            @endhasanyrole
+          </form>
+          @unlessrole('admin|comerc|ope')
+          <li><a href="/reservas">Minhas Compras</a></li>
+          @endunless
+          <li style="padding: 15px; padding-top: 15px;">Bem vindo(a) {{ auth()->user()->name }}</li>
+          @else
+            <li><a href="/cadastro">Registrar-se</a></li>
+            <li><a href="/login">Login</a></li>
+          @endauth
+            <a href="/"><img src="images/pato.png" style="float: inline-start; width:60px; height: 30px;padding: 15px; padding-top: 15px;"></a>
+        </ul>
       </div>
   </div>
   <main>
