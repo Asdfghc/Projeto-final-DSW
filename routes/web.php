@@ -1,9 +1,11 @@
 <?php
 
+use App\Models\Convidado;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ReservaController;
+use App\Http\Controllers\ConvidadoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +32,10 @@ Route::get('/reserva/{id}', [ReservaController::class, 'show'])->middleware('aut
 
 Route::get('/reserva/{id}/edit', [ReservaController::class, 'edit'])->middleware('auth');
 
+Route::get('/reserva/{id}/negar', [ReservaController::class, 'negar'])->middleware('auth');
+
+Route::get('/reserva/{id}/aceitar', [ReservaController::class, 'aceitar'])->middleware('auth');
+
 Route::put('/reserva/{id}', [ReservaController::class, 'update'])->middleware('auth');
 
 Route::delete('/reserva/{id}', [ReservaController::class, 'destroy'])->middleware('auth');
@@ -45,9 +51,11 @@ Route::post('/users', [UserController::class, 'store'])->middleware('guest');
 
 Route::post('/logout', [UserController::class, 'logout'])->middleware('auth');
 
-Route::get('/confirmacao/{id}', function ($id) {
-    return view('confirmacao', ['id' => $id]);
-});
+
+Route::get('/convidado/{id}', [ConvidadoController::class, 'create']);
+
+Route::post('/convidado/{id}', [ConvidadoController::class, 'store']);
+
 
 Route::get('/pesquisa', function () {
     return view('pesquisa');

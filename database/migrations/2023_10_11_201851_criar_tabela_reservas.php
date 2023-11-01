@@ -20,7 +20,7 @@ return new class extends Migration
             $table->longText('servico');
             $table->integer('nconvidados');
             $table->integer('idade');
-            $table->string('status')->default('pendente');
+            $table->string('status')->default('PENDENTE');
             $table->timestamps();
         });
     }

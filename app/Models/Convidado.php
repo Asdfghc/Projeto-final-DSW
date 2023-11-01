@@ -8,4 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Convidado extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'name',
+        'idade',
+        'CPF',
+        'convuser_id'];
+
+    // Relação com a reserva
+    public function reserva() {
+        return $this->belongsTo(Reserva::class, 'conv_user_id');
+    }
 }

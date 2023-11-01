@@ -133,6 +133,18 @@
       background-color: #0E0073;
       color: white;
     }
+
+    table, th, td {
+      border: 1px solid black;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    th, td {
+      background-color: #eee7f7;
+      text-align: center;
+      font-size: 25px;
+    }
   </style>
   <div class="topo">
       <div>

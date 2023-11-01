@@ -16,10 +16,16 @@ class Reserva extends Model
         'servico',
         'nconvidados',
         'idade',
+        'status',
         'user_id'];
 
     // Relação com o usuário
     public function user() {
         return $this->belongsTo(User::class, 'user_id');
+    }
+    
+    // Relação com os convidados
+    public function convidados() {
+        return $this->hasMany(Convidado::class, 'convuser_id');
     }
 }

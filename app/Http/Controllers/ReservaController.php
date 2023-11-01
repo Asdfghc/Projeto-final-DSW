@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Reserva;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Gate;
 
 class ReservaController extends Controller
 {
@@ -87,6 +86,30 @@ class ReservaController extends Controller
         $id->delete();
 
         return redirect('/reservas')->with('mensagem', 'Reserva removida com sucesso!');
+    }
+
+    // Negar reserva
+    public function negar(Reserva $id) {
+        $user = User::find(auth()->id());
+        if($user->hasRole('user') || $user->hasRole('ope')) {
+            return redirect('/reservas');
+        }
+
+        $id->update(['status' => 'NEGADO']);
+
+        return redirect('/reservas')->with('mensagem', 'Reserva negada com sucesso!');
+    }
+
+    // Aceitar reserva
+    public function aceitar(Reserva $id) {
+        $user = User::find(auth()->id());
+        if($user->hasRole('user') || $user->hasRole('ope')) {
+            return redirect('/reservas');
+        }
+
+        $id->update(['status' => 'ACEITO']);
+
+        return redirect('/reservas')->with('mensagem', 'Reserva aceita com sucesso!');
     }
 
 }

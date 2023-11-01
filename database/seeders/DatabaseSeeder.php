@@ -46,12 +46,5 @@ class DatabaseSeeder extends Seeder
         ]);
         $user->assignRole('ope');
 
-        //Convidado::create([
-        ////'user_id' => '42',
-        //    'name' => 'Test User',
-        //    'CPF' => '12345678910',
-        //    'idade' => '18'
-        //]);
-
     }
 }

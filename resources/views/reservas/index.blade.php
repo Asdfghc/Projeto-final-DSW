@@ -1,14 +1,36 @@
 <x-layout>
     <div>
+        <h1 style="font-size: 50px; text-align: center;">Lista de Próximas Festas</h1>
+        <table style="width:90%; text-align: center;">
+        <tr>
+            <th>Início</th>
+            <th>Fim</th>
+            <th style="width: 30%">Nome</th>
+            <th style="width: 20%">Qntd. estimada de Convidados</th>
+            <th>Idade</th>
+            <th>Status</th>
+            <th>Ver reserva</th>
+        </tr>
         @unless (count($reservas) == 0)
-            
             @foreach($reservas as $reserva)
-                <a href="/reserva/{{$reserva->id}}">Data e hora: {{$reserva->dataehora_inicio}} até {{$reserva->dataehora_fim}}</a>
-                <p>Status: {{$reserva->status}}</p>
-                
+                <tr>
+                    <td>{{$reserva->dataehora_inicio}}</td>
+                    <td>{{$reserva->dataehora_fim}}</td>
+                    <td>{{$reserva->nome}}</td>
+                    <td>{{$reserva->nconvidados}}</td>
+                    <td>{{$reserva->idade}}</td>
+                    <td>{{$reserva->status}}
+                    @hasanyrole('admin|comerc')
+                    <br><a href="/reserva/{{$reserva->id}}/negar">Negar</a>
+                    <br><a href="/reserva/{{$reserva->id}}/aceitar">Aceitar</a>
+                    @endhasanyrole
+                    </td>
+                    <td><a href="/reserva/{{$reserva->id}}">Mais detalhes</td>
+                </tr>
             @endforeach
-        @else
-            <p>Você não possui reservas</p>
-        @endunless
+            @else
+                <td>Você não possui reservas</td>
+            @endunless
+        </table>
     </div>
 </x-layout>
