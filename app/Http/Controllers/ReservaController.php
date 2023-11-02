@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Convidado;
 use App\Models\User;
 use App\Models\Reserva;
 use Illuminate\Http\Request;
@@ -29,7 +30,7 @@ class ReservaController extends Controller
             return redirect('/reservas');
         }
 
-        return view('reservas/show', ['reserva' => $id]);
+        return view('reservas/show', ['reserva' => $id, 'convidados' => Convidado::where('convuser_id', $id->id)->get()]);
     }
 
     // Mostrar formulário de criação de reserva
@@ -70,6 +71,8 @@ class ReservaController extends Controller
         $formFields = $request->validate([
             'servico' => 'required'
         ]);
+
+        $formFields['status'] = 'PENDENTE';
 
         $id->update($formFields);
 

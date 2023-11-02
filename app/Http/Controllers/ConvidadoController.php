@@ -25,6 +25,14 @@ class ConvidadoController extends Controller
         
         Convidado::create($formFields);
 
-        return redirect('/')->with('mensagem', 'Convidado cadastrado com sucesso!');
+        return redirect('/convidado/'.$id)->with('mensagem', 'Convidado cadastrado com sucesso!');
+    }
+
+    // Deletar convidado do banco de dados
+    public function destroy($id) {
+        
+        Convidado::findOrFail($id)->delete();
+
+        return redirect('/reservas')->with('mensagem', 'Convidado removido com sucesso!');
     }
 }
