@@ -4,7 +4,9 @@
     <p>Status: {{ $reserva->status }}</p>
     <p>Nome: {{ $reserva->nome }}</p>
     <p>Idade a ser comemorada: {{ $reserva->idade }}</p>
-    <p>Servico: {{ $reserva->servico }}</p><a href="/reserva/{{$reserva->id}}/edit">Editar seviço</a>
+    <a href="/servicos">Servico: Pacote {{ $reserva->servico }}</a>
+    <p>Valor: R$ {{ $servico->valor }}</p>
+    <a href="/reserva/{{$reserva->id}}/edit">Editar seviço</a>
     <p>Número de convidados estimado: {{ $reserva->nconvidados }}</p>
     @if ($reserva->status == 'ACEITO')
         <p>Formulário de confirmação de convidados: <a href="/convidado/{{$reserva->id}}">Clique aqui</a></p>

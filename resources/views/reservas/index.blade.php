@@ -8,6 +8,7 @@
             <th style="width: 30%">Nome</th>
             <th style="width: 20%">Qntd. estimada de Convidados</th>
             <th>Idade</th>
+            <th>Serviço</th>
             <th>Status</th>
             <th>Ver reserva</th>
         </tr>
@@ -19,6 +20,7 @@
                     <td>{{$reserva->nome}}</td>
                     <td>{{$reserva->nconvidados}}</td>
                     <td>{{$reserva->idade}}</td>
+                    <td>Pacote {{$reserva->servico}}</td>
                     <td>{{$reserva->status}}
                     @hasanyrole('admin|comerc')
                     <br><a href="/reserva/{{$reserva->id}}/negar">Negar</a>
@@ -29,8 +31,11 @@
                 </tr>
             @endforeach
             @else
-                <td>Você não possui reservas</td>
+            <td>Você não possui reservas</td>
             @endunless
+            @role('user')
+                <td><a href="/agendamento">Fazer reserva</a></td>
+            @endrole
         </table>
     </div>
 </x-layout>

@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ReservaController;
+use App\Http\Controllers\ServicosController;
 use App\Http\Controllers\ConvidadoController;
 
 /*
@@ -57,6 +58,20 @@ Route::get('/convidado/{id}', [ConvidadoController::class, 'create']);
 Route::post('/convidado/{id}', [ConvidadoController::class, 'store']);
 
 Route::delete('/convidado/{id}', [ConvidadoController::class, 'destroy'])->middleware('auth');
+
+
+Route::get('/servicos', [ServicosController::class, 'index']);
+
+Route::get('/servicos/edit', [ServicosController::class, 'edit'])->middleware('auth');
+
+Route::put('/servicos', [ServicosController::class, 'update'])->middleware('auth');
+
+
+Route::get('/agenda', [AgendaController::class, 'index'])->middleware('auth');
+
+Route::get('/agenda/edit', [AgendaController::class, 'edit'])->middleware('auth');
+
+Route::put('/agenda', [AgendaController::class, 'update'])->middleware('auth');
 
 
 Route::get('/pesquisa', function () {

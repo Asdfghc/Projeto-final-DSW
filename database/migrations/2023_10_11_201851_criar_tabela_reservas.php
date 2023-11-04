@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('nome');
             $table->dateTimeTz('dataehora_inicio');
             $table->dateTimeTz('dataehora_fim');
-            $table->longText('servico');
+            $table->integer('servico');
             $table->integer('nconvidados');
             $table->integer('idade');
             $table->string('status')->default('PENDENTE');

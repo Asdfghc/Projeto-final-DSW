@@ -1,6 +1,19 @@
 <x-layout>
     <br>
     <h1 style="text-align: center; color: #0E0073;"> Faça seu pedido</h1>  
+
+    <br>
+    <br>
+    <div class="capa">
+        Horário de funcionamento:
+        @foreach($agendas as $agenda)
+            <p> {{$weekMap[$agenda->id-1]}}: {{$agenda->inicio}} - {{$agenda->fim}}</p>
+        @endforeach
+    </div>
+
+
+    <br>
+    <br>
     <div style="text-align: center;">
         <form method="POST" action="/reserva">
             @csrf
@@ -60,8 +73,13 @@
             <br>
             <br>
             <div class="capa">
+                <a href="/servicos" target="_blank">Clique aqui para ver nossos pacotes!</a>
                 <label for="servico">Serviço</label>
-                <textarea name="servico" rows="10" placeholder="Exemplo: 2 coxinhas" value="{{old('servico')}}"></textarea>
+                <select name="servico">
+                    <option value="1">Pacote 1</option>
+                    <option value="2">Pacote 2</option>
+                    <option value="3">Pacote 3</option>
+                </select>
 
                 @error('servico')
                     <p>{{ $message }}</p>
