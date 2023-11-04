@@ -6,7 +6,7 @@
 ### SETUP Passo a passo
 Clone Repositório
 ```sh
-git clone -b Producao https://github.com/Asdfghc/Projeto-final-DSW.git app-laravel
+git clone -b front_end_1 https://github.com/Asdfghc/Projeto-final-DSW.git app-laravel
 ```
 ```sh
 cd app-laravel
