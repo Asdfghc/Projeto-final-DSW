@@ -1,7 +1,7 @@
 <x-layout>
     <div>
         <h1 style="font-size: 50px; text-align: center;">Lista de Próximas Festas</h1>
-        <table style="width:90%; text-align: center;">
+        <table style="width:90%; text-align: center; background-color: #0E0073;">
         <tr>
             <th>Início</th>
             <th>Fim</th>

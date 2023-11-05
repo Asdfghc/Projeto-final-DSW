@@ -1,7 +1,7 @@
 <x-layout>
     <h1 style="text-align: center; color: #0E0073;"> Pacotes de serviço</h1>
     @hasanyrole('admin|comerc')
-        <a href="/servicos/edit">Edição dos pacotes</a>
+        <a href="/servicos/edit" role="button" class="botao">Edição dos pacotes</a>
     @endhasanyrole
     @foreach($servicos as $servico)
     <div style="text-align: center;">
