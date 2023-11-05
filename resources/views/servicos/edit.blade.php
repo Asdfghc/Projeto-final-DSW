@@ -38,4 +38,6 @@
                     <li><a href="/" class="a">Voltar</a></li>
                 </ul>
             </div>
+        </form>
+    </div>
 </x-layout>

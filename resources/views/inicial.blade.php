@@ -105,8 +105,8 @@
   <div class="agende">
    <ul class="myUL">
     @hasanyrole('admin|comerc')
-      <li><a href="/Html/Fazendinha/Fazendinha_Agenda.html" class="agende">Agenda</a></li>
-      <li><a href="/servicos/edit" class="agende">Pacotes de Comida</a></li>
+      <li><a href="/agenda" class="agende">Agenda</a></li>
+      <li><a href="/servicos" class="agende">Pacotes de Comida</a></li>
       <li><a href="/Html/Fazendinha/Fazendinha_Solicitacoes.html" class="agende">Pedidos</a></li>
     @endhasanyrole
     @role('ope')

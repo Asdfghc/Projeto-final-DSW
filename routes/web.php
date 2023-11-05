@@ -4,6 +4,7 @@ use App\Models\Convidado;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\ReservaController;
 use App\Http\Controllers\ServicosController;
 use App\Http\Controllers\ConvidadoController;
@@ -70,6 +71,8 @@ Route::put('/servicos', [ServicosController::class, 'update'])->middleware('auth
 Route::get('/agenda', [AgendaController::class, 'index'])->middleware('auth');
 
 Route::get('/agenda/edit', [AgendaController::class, 'edit'])->middleware('auth');
+
+Route::post('/agenda', [AgendaController::class, 'show'])->middleware('auth');
 
 Route::put('/agenda', [AgendaController::class, 'update'])->middleware('auth');
 
