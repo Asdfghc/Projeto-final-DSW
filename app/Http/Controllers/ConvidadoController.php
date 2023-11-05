@@ -10,7 +10,7 @@ class ConvidadoController extends Controller
 {
     //Criar um convidado
     public function create(Reserva $id) {
-        return view('convidados/create', ['id' => $id]);
+        return view('convidados/create', ['id' => $id, 'nome' => $id->nome]);
     }
 
     // Armazenar convidado no banco de dados

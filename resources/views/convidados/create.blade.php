@@ -13,7 +13,7 @@
     </script>
     <br>
     <div style="text-align: center;">
-        <h1 style="color: #0E0073;">Parabéns!!<br> Voce foi chamado para a festa de ________</h1>
+        <h1 style="color: #0E0073;">Parabéns!!<br> Você foi chamado para a festa de {{ $nome }}</h1>
         <form method="POST" action="/convidado/{{$id->id}}">
             @csrf
             <div class="capa">

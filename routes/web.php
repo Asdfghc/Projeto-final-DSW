@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\ReservaController;
+use App\Http\Controllers\PesquisaController;
 use App\Http\Controllers\ServicosController;
 use App\Http\Controllers\ConvidadoController;
 
@@ -77,6 +78,8 @@ Route::post('/agenda', [AgendaController::class, 'show'])->middleware('auth');
 Route::put('/agenda', [AgendaController::class, 'update'])->middleware('auth');
 
 
-Route::get('/pesquisa', function () {
-    return view('pesquisa');
-});
+Route::get('/pesquisa', [PesquisaController::class, 'create'])->middleware('auth');
+
+Route::post('/pesquisa', [PesquisaController::class, 'store'])->middleware('auth');
+
+Route::get('/pesquisa/index', [PesquisaController::class, 'index'])->middleware('auth');

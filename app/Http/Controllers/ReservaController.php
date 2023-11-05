@@ -23,7 +23,7 @@ class ReservaController extends Controller
             return view('reservas/index', ['reservas' => Reserva::where('status', 'ACEITO')->where('dataehora_fim', '>', Carbon::now('Brazil/East')->toDateTimeString())->orderBy('dataehora_inicio', 'ASC')->get()]);
         }
         else {
-            return view('reservas/index', ['reservas' => Reserva::where('dataehora_fim', '>', Carbon::now('Brazil/East')->toDateTimeString())->orderBy('dataehora_inicio', 'ASC')->get()]);
+            return view('reservas/index', ['reservas' => Reserva::where('dataehora_fim', '>', Carbon::now('Brazil/East')->toDateTimeString())->orderBy('dataehora_inicio', 'ASC')->get(), 'reservas_passadas']);
         }
     }
 

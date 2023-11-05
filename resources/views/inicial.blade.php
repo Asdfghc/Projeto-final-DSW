@@ -109,11 +109,18 @@
       <li><a href="/servicos" class="agende">Pacotes de Comida</a></li>
       <li><a href="/reservas" class="agende">Pedidos</a></li>
     @endhasanyrole
+    @role('admin')
+      <li><a href="/pesquisa/index" class="agende">Resultados das pesquisas de Satisfação</a></li>
+    @endrole
     @role('ope')
       <li><a href="/reservas" class="agende">Lista de Festas</a></li>
     @endrole
     @role('user')
       <li><a href="/agendamento" class="agende" style="text-align: center;">Agende sua festa</a></li>
+      <br>
+      <br>
+      <br>
+      <li><a href="/pesquisa" class="agende" style="text-align: center;">Pesquisa de satisfação</a></li>
     @endrole
    </ul>
   </div> 

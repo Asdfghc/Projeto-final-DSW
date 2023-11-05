@@ -10,7 +10,9 @@
             <th style="width: 20%">Qntd. estimada de Convidados</th>
             <th>Idade</th>
             <th>Serviço</th>
+            @unlessrole('ope')
             <th>Status</th>
+            @endunlessrole
             <th>Ver reserva</th>
         </tr>
         @unless (count($reservas) == 0)
@@ -23,7 +25,9 @@
                     <td>{{$reserva->nconvidados}}</td>
                     <td>{{$reserva->idade}}</td>
                     <td>Pacote {{$reserva->servico}}</td>
+                    @unlessrole('ope')
                     <td>{{$reserva->status}}
+                    @endunlessrole
                     @hasanyrole('admin|comerc')
                     <br><a href="/reserva/{{$reserva->id}}/negar">Negar</a>
                     <br><a href="/reserva/{{$reserva->id}}/aceitar">Aceitar</a>
