@@ -8,10 +8,10 @@
                 <div class="capa">
                     <p>{{$weekMap[$dia_da_semana->id-1]}}</p>
                     <label for="ini{{1+$loop->index}}">Abertura</label>
-                    <input type="text" name="ini{{1+$loop->index}}" placeholder="" value="{{$dia_da_semana->inicio}}"/>
+                    <input type="time" name="ini{{1+$loop->index}}" placeholder="" value="{{$dia_da_semana->inicio}}"/>
                 <br>
                     <label for="fim{{1+$loop->index}}">Fechamento</label>
-                    <input type="text" name="fim{{1+$loop->index}}" placeholder="" value="{{$dia_da_semana->fim}}"/>
+                    <input type="time" name="fim{{1+$loop->index}}" placeholder="" value="{{$dia_da_semana->fim}}"/>
                 </div>
                 <br>
                 <br>

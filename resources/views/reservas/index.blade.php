@@ -1,8 +1,9 @@
 <x-layout>
     <div>
         <h1 style="font-size: 50px; text-align: center;">Lista de Próximas Festas</h1>
-        <table style="width:90%; text-align: center;">
+        <table style="width:90%; text-align: center; background-color: #0E0073;">
         <tr>
+            <th>Data</th>
             <th>Início</th>
             <th>Fim</th>
             <th style="width: 30%">Nome</th>
@@ -15,8 +16,9 @@
         @unless (count($reservas) == 0)
             @foreach($reservas as $reserva)
                 <tr>
-                    <td>{{$reserva->dataehora_inicio}}</td>
-                    <td>{{$reserva->dataehora_fim}}</td>
+                    <td>{{date('d/m/Y', strtotime($reserva->dataehora_inicio))}}</td>
+                    <td>{{date('H:i', strtotime($reserva->dataehora_inicio))}}</td>
+                    <td>{{date('H:i', strtotime($reserva->dataehora_fim))}}</td>
                     <td>{{$reserva->nome}}</td>
                     <td>{{$reserva->nconvidados}}</td>
                     <td>{{$reserva->idade}}</td>

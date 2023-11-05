@@ -107,7 +107,7 @@
     @hasanyrole('admin|comerc')
       <li><a href="/agenda" class="agende">Agenda</a></li>
       <li><a href="/servicos" class="agende">Pacotes de Comida</a></li>
-      <li><a href="/Html/Fazendinha/Fazendinha_Solicitacoes.html" class="agende">Pedidos</a></li>
+      <li><a href="/reservas" class="agende">Pedidos</a></li>
     @endhasanyrole
     @role('ope')
       <li><a href="/reservas" class="agende">Lista de Festas</a></li>

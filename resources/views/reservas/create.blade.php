@@ -1,17 +1,6 @@
 <x-layout>
     <br>
     <h1 style="text-align: center; color: #0E0073;"> Faça seu pedido</h1>  
-
-    <br>
-    <br>
-    <div class="capa">
-        Horário de funcionamento:
-        @foreach($agendas as $agenda)
-            <p> {{$weekMap[$agenda->id-1]}}: {{$agenda->inicio}} - {{$agenda->fim}}</p>
-        @endforeach
-    </div>
-
-
     <br>
     <br>
     <div style="text-align: center;">
@@ -29,22 +18,34 @@
             <br>
             <br>
             <div class="capa">
-                <label for="dataehora_inicio">Dia e horário do início</label>
+                <a href="/agenda" target="_blank">Clique aqui para ver nossos horários!</a>
                 <br>
-                <input type="text" name="dataehora_inicio" value="{{old('dataehora_inicio')}}"/>
+                <br>
+                
+                <label for="data">Dia</label>
+                <br>
+                <input type="date" name="data" value="{{old('data')}}"/>
 
-                @error('dataehora_inicio')
+                @error('data')
                     <p>{{ $message }}</p>
                 @enderror
-            </div>
-            <br>
-            <br>
-            <div class="capa">
-                <label for="dataehora_fim">Dia e horário do final</label>
-                <br>
-                <input type="text" name="dataehora_fim" value="{{old('dataehora_fim')}}"/>
 
-                @error('dataehora_fim')
+                <br>
+                <br>
+                <label for="hora_inicio">Dia e horário do início</label>
+                <br>
+                <input type="time" name="hora_inicio" value="{{old('hora_inicio')}}"/>
+
+                @error('hora_inicio')
+                    <p>{{ $message }}</p>
+                @enderror
+            <br>
+            <br>
+                <label for="hora_fim">Dia e horário do final</label>
+                <br>
+                <input type="time" name="hora_fim" value="{{old('hora_fim')}}"/>
+
+                @error('hora_fim')
                     <p>{{ $message }}</p>
                 @enderror
             </div>

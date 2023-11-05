@@ -7,7 +7,7 @@
     <div style="text-align: center;">
         {!! $servico->pacote !!}
         <img src="{{ $servico->imagem }}" alt="Imagem pacote 1" width="600px">
-        <p>Valor: R$ {{ $servico->valor }}</p>
+        <p>Valor: R$ {{ $servico->valor }} por convidado</p>
     </div>
     <br>
     <br>

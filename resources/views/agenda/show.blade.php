@@ -1,6 +1,6 @@
 <x-layout>
-    <h1 style="font-size: 50px; text-align: center;">Lista de horários</h1>
-    <table style="width:90%; text-align: center;">
+    <h1 style="font-size: 50px; text-align: center;">Lista de horários ocupados</h1>
+    <table style="width:90%; text-align: center; background-color: #0E0073;">
         @unless (count($reservas) == 0)
             <tr>
                 <th>Horário de início</th>

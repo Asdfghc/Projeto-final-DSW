@@ -56,12 +56,16 @@ class ReservaController extends Controller
     public function store(Request $request) {
         $formFields = $request->validate([
             'nome' => 'required',
-            'dataehora_inicio' => 'required',
-            'dataehora_fim' => 'required',
+            'data' => 'required',
+            'hora_inicio' => 'required',
+            'hora_fim' => 'required',
             'servico' => 'required',
             'nconvidados' => 'required',
             'idade' => 'required'
         ]);
+
+        $formFields['dataehora_inicio'] = $formFields['data'].' '.$formFields['hora_inicio'];
+        $formFields['dataehora_fim'] = $formFields['data'].' '.$formFields['hora_fim'];
 
         if($formFields['dataehora_inicio'] > $formFields['dataehora_fim']) {
             return redirect('/agendamento')->with('mensagem', 'A data de início não pode ser maior que a data de fim!');
@@ -75,7 +79,15 @@ class ReservaController extends Controller
         $df = new DateTime($formFields['dataehora_fim']);
         //$df->format('H:i:s');
         
-        if($di->format('H:i:s') < Agenda::find(1+Carbon::now()->dayOfWeek)->inicio || $df->format('H:i:s') > Agenda::find(1+Carbon::now()->dayOfWeek)->fim) {
+        // $lista = [
+        //     $di->format('H:i:s'),
+        //     $df->format('H:i:s'),
+        //     Agenda::find($dia_da_semana = 1+date('w', strtotime($formFields['dataehora_inicio'])))->inicio,
+        //     Agenda::find($dia_da_semana = 1+date('w', strtotime($formFields['dataehora_inicio'])))->fim
+        // ];
+        // dd($lista);
+
+        if($di->format('H:i:s') < Agenda::find($dia_da_semana = 1+date('w', strtotime($formFields['dataehora_inicio'])))->inicio || $df->format('H:i:s') > Agenda::find($dia_da_semana = 1+date('w', strtotime($formFields['dataehora_inicio'])))->fim) {
             return redirect('/agendamento')->with('mensagem', 'Infelizmente o buffet não está em funcionamento esse horário!');
         }
 

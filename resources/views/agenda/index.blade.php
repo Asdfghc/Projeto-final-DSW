@@ -10,7 +10,7 @@
     <div class="capa">
         Horário de funcionamento:
         @foreach($agendas as $agenda)
-            <p> {{$weekMap[$agenda->id-1]}}: {{$agenda->inicio}} - {{$agenda->fim}}</p>
+            <p> {{$weekMap[$agenda->id-1]}}: {{date('H:i', strtotime($agenda->inicio))}} - {{date('H:i', strtotime($agenda->fim))}}</p>
         @endforeach
     </div>
     <br>

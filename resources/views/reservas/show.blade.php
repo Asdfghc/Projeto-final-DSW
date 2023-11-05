@@ -1,15 +1,17 @@
 <x-layout>
     <p>Ficamos felizes com sua reserva! Lembre-se de sla chegar antes</p>
-    <p>Data e hora: {{ $reserva->dataehora_inicio }} até {{ $reserva->dataehora_fim }}</p>
+    <p>Data: {{ date('d/m/Y', strtotime($reserva->dataehora_inicio)) }}</p>
+    <p>Horário: {{ date('H:i', strtotime($reserva->dataehora_inicio)) }} até {{ date('H:i', strtotime($reserva->dataehora_fim)) }}</p>
     <p>Status: {{ $reserva->status }}</p>
     <p>Nome: {{ $reserva->nome }}</p>
     <p>Idade a ser comemorada: {{ $reserva->idade }}</p>
-    <a href="/servicos">Servico: Pacote {{ $reserva->servico }}</a>
-    <p>Valor: R$ {{ $servico->valor }}</p>
+    <a href="/servicos" target="_blank">Servico: Pacote {{ $reserva->servico }}</a>
+    <p>Valor: R$ {{ $servico->valor }} por convidado</p>
+    <p>Valor estimado: R$ {{ $servico->valor * $reserva->nconvidados }}</p>
     <a href="/reserva/{{$reserva->id}}/edit">Editar seviço</a>
     <p>Número de convidados estimado: {{ $reserva->nconvidados }}</p>
     @if ($reserva->status == 'ACEITO')
-        <p>Formulário de confirmação de convidados: <a href="/convidado/{{$reserva->id}}">Clique aqui</a></p>
+        <p>Formulário de confirmação de convidados: <a href="/convidado/{{$reserva->id}}" target="_blank">Clique aqui</a></p>
         <div>
             <h2 style="font-size: 50px; text-align: center;">Lista de convidados confirmados</h2>
             <table style="width:90%; text-align: center;">

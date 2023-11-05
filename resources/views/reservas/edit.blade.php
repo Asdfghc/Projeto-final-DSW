@@ -20,9 +20,9 @@
                 @foreach($servicos as $servico)
                     @if($servico->id == $servico_atual->id)
                         <p>Pacote atual: {{$servico->id}}</p>
-                        <p>Valor atual: R$ {{$servico->valor}}</p>
+                        <p>Valor atual: R$ {{$servico->valor}} por convidado</p>
                     @else
-                        <p>Diferença de preço entre o pacote atual e o pacote {{$servico->id}}: R$ {{$servico->valor - $servico_atual->valor}} 
+                        <p>Diferença de preço entre o pacote atual e o pacote {{$servico->id}}: R$ {{$servico->valor - $servico_atual->valor}} por convidado 
                         @if($servico->valor - $servico_atual->valor > 0)
                             (a pagar)
                         @else

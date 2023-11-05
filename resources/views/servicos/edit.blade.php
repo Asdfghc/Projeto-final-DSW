@@ -26,7 +26,7 @@
                 <br>
                 <br>
                 <div class="capa">
-                    <label for="valor{{1+$loop->index}}">Valor do pacote {{$servico->id}}</label>
+                    <label for="valor{{1+$loop->index}}">Valor do pacote {{$servico->id}} por convidado</label>
                     <input type="number" step="0.01" name="valor{{1+$loop->index}}" value="{{$servico->valor}}"/>
                 </div>
                 <br>

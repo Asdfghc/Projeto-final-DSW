@@ -82,7 +82,13 @@
     input[type=text]:focus {
         background-color: #C1B0F0;
     }
-
+    input[type=time]:focus {
+        background-color: #C1B0F0;
+    }
+    input[type=date]:focus {
+        background-color: #C1B0F0;
+    }
+    
     input[type=email]:focus {
         background-color: #C1B0F0;
     }
