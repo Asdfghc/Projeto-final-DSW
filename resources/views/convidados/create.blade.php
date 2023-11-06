@@ -10,52 +10,76 @@
             texto = mascara.substring(i);
           }
         }
+        let n = 2;
+        function addConv(){
+            let conv = document.querySelector('.conv');
+            let clone = conv.cloneNode(true);
+            
+            clone.querySelector('.titulo').textContent = `Convidado ${n}`;
+            clone.querySelector('.capa input[name="name1"]').name = `name${n}`;
+            clone.querySelector('.capa input[name="idade1"]').name = `idade${n}`;
+            clone.querySelector('.capa input[name="CPF1"]').name = `CPF${n}`;
+
+            conv.parentNode.insertBefore(clone, conv.parentNode.childNodes[conv.parentNode.childNodes.length - 10]);
+            n++;
+        }
+    
+
     </script>
     <br>
     <div style="text-align: center;">
         <h1 style="color: #0E0073;">Parabéns!!<br> Você foi chamado para a festa de {{ $nome }}</h1>
         <form method="POST" action="/convidado/{{$id->id}}">
             @csrf
-            <div class="capa">
-                <label for="name">name</label>
-                <br>
-                <input type="text" name="name" placeholder="name" value="{{old('name')}}"/>
+            <div class="conv">
+                <h3 class="titulo">Convidado 1</h3>
+                <div class="capa">
+                    <label for="name1">name</label>
+                    <br>
+                    <input type="text" name="name1" placeholder="Nome" value="{{old('name1')}}"/>
 
-                @error('name')
-                    <p>{{ $message }}</p>
-                @enderror
+                    @error('name1')
+                        <p>{{ $message }}</p>
+                    @enderror
+                </div>
+                <br>
+                <br>
+                <div class="capa">
+                    <label for="idade1">Idade</label>
+                    <br>
+                    <input type="number" step="1" name="idade1" max="100" min="0" value="{{old('idade1')}}"/>
+
+                    @error('idade1')
+                        <p>{{ $message }}</p>
+                    @enderror
+                </div>
+                <br>
+                <br>
+                <div class="capa">
+                    <label for="CPF1">CPF</label>
+                    <br>
+                    <input type="text" name="CPF1" placeholder="___.___.___-__" maxlength="14"
+                OnKeyPress="formatar('###.###.###-##',this)" value="{{old('CPF1')}}"/>
+
+                    @error('CPF1')
+                        <p>{{ $message }}</p>
+                    @enderror
+                </div>
+                <br>
+                <br>
             </div>
             <br>
-            <br>
-            <div class="capa">
-                <label for="idade">Idade</label>
-                <br>
-                <input type="number" step="1" name="idade" max="100" min="0" value="{{old('idade')}}"/>
-
-                @error('idade')
-                    <p>{{ $message }}</p>
-                @enderror
-            </div>
+            
+            <button class="botao" type="button" onclick="addConv()">Adicionar outro convidado</button>
+            
             <br>
             <br>
-            <div class="capa">
-                <label for="CPF">CPF</label>
-                <br>
-                <input type="text" name="CPF" placeholder="___.___.___-__" maxlength="14"
-              OnKeyPress="formatar('###.###.###-##',this)" value="{{old('CPF')}}"/>
-
-                @error('CPF')
-                    <p>{{ $message }}</p>
-                @enderror
-            </div>
             <br>
-            <br>
-
             <div class="a">
                 <ul class="myUL">
-                  <button class="botao">Confirmar reserva</button>
+                    <button class="botao">Confirmar reserva</button>
                 </ul>
-              </div>
+            </div>
         </form>
     </div>
 </x-layout>

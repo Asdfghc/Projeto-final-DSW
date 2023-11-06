@@ -15,17 +15,28 @@ class ConvidadoController extends Controller
 
     // Armazenar convidado no banco de dados
     public function store(Request $request, $id) {
-        $formFields = $request->validate([
-            'name' => 'required',
-            'idade' => 'required',
-            'CPF' => 'required'
-        ]);
+        $i = 1;
+        while ($request->input('name'.$i) != null) {
+            //Validação dos campos
+            $formFields = $request->validate([
+                'name'.$i => 'required',
+                'idade'.$i => 'required',
+                'CPF'.$i => 'required'
+            ]);
 
-        $formFields['convuser_id'] = $id;
+            $input = [
+                'name' => $formFields['name'.$i],
+                'idade' => $formFields['idade'.$i],
+                'CPF' => $formFields['CPF'.$i]
+            ];
+
+            $input['convuser_id'] = $id;
+            
+            Convidado::create($input);
+            $i++;
+        }
         
-        Convidado::create($formFields);
-
-        return redirect('/convidado/'.$id)->with('mensagem', 'Convidado cadastrado com sucesso!');
+        return redirect()->back()->with('mensagem', 'Convidado cadastrado com sucesso!');
     }
 
     // Deletar convidado do banco de dados
@@ -33,6 +44,6 @@ class ConvidadoController extends Controller
         
         Convidado::findOrFail($id)->delete();
 
-        return redirect('/reservas')->with('mensagem', 'Convidado removido com sucesso!');
+        return redirect()->back()->with('mensagem', 'Convidado removido com sucesso!');
     }
 }

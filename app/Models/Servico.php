@@ -10,10 +10,9 @@ class Servico extends Model
     use HasFactory;
 
     protected $fillable = [
-        'pacote1',
+        'pacote',
         'imagem1',
-        'pacote2',
         'imagem2',
-        'pacote3',
-        'imagem3'];
+        'imagem3',
+        'valor',];
 }

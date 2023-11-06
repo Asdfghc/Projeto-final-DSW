@@ -14,7 +14,9 @@ return new class extends Migration
         Schema::create('servicos', function (Blueprint $table) {
             $table->id();
             $table->longText('pacote');
-            $table->longText('imagem');
+            $table->longText('imagem1');
+            $table->longText('imagem2');
+            $table->longText('imagem3');
             $table->float('valor');
             $table->timestamps();
         });

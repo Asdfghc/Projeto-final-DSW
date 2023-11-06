@@ -115,11 +115,10 @@
     @role('ope')
       <li><a href="/reservas" class="agende">Lista de Festas</a></li>
     @endrole
-    @role('user')
+    @unlessrole('admin|ope|comerc')
       <li><a href="/agendamento" class="agende" style="text-align: center;">Agende sua festa</a></li>
-      <br>
-      <br>
-      <br>
+    @endunlessrole
+    @role('user')
       <li><a href="/pesquisa" class="agende" style="text-align: center;">Pesquisa de satisfação</a></li>
     @endrole
    </ul>

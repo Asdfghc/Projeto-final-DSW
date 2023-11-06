@@ -1,12 +1,4 @@
 <x-layout>
-    <head>
-        <script type="text/javascript" src='https://cdn.tiny.cloud/1/2b8foqu3g5757fekw52v9slhmcpo233ogz0xxptldzo29bdi/tinymce/6/tinymce.min.js'></script>
-        <script>
-        tinymce.init({
-            selector: "#editor"
-        });
-        </script>
-    </head>
     <h1 style="text-align: center; color: #0E0073;"> Edição dos Pacotes</h1>
     <div style="text-align: center;">
         <form method="POST" action="/servicos">
@@ -16,12 +8,34 @@
                 <div class="capa">
                     <label for="pacote{{1+$loop->index}}">Pacote {{$servico->id}}</label>
                     <textarea name="pacote{{1+$loop->index}}" id="editor"></textarea>
+                    <script>
+                        tinymce.init({
+                            selector: "#editor",
+                            setup: function (editor) {
+                                editor.on('init', function () {
+                                    editor.setContent('{!! $servico->pacote !!}');
+                                });
+                            }
+                        });
+                    </script>
                 </div>
                 <br>
                 <br>
                 <div class="capa">
-                    <label for="imagem{{1+$loop->index}}">Imagem do pacote {{$servico->id}}</label>
-                    <input type="text" name="imagem{{1+$loop->index}}" value="{{$servico->imagem}}"/>
+                    <label for="imagem1{{1+$loop->index}}">Imagem do pacote {{$servico->id}}</label>
+                    <input type="text" name="imagem1{{1+$loop->index}}" value="{{$servico->imagem1}}"/>
+                </div>
+                <br>
+                <br>
+                <div class="capa">
+                    <label for="imagem2{{1+$loop->index}}">Imagem do pacote {{$servico->id}}</label>
+                    <input type="text" name="imagem2{{1+$loop->index}}" value="{{$servico->imagem2}}"/>
+                </div>
+                <br>
+                <br>
+                <div class="capa">
+                    <label for="imagem3{{1+$loop->index}}">Imagem do pacote {{$servico->id}}</label>
+                    <input type="text" name="imagem3{{1+$loop->index}}" value="{{$servico->imagem3}}"/>
                 </div>
                 <br>
                 <br>
@@ -35,7 +49,7 @@
             <div class="a">
                 <ul class="myUL">
                     <button class="botao">Confirmar alterações</button>
-                    <li><a href="/" class="a">Voltar</a></li>
+                    <li><a href="/servicos" class="a">Voltar</a></li>
                 </ul>
             </div>
         </form>

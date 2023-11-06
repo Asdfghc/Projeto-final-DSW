@@ -34,13 +34,17 @@ class ServicosController extends Controller
             //Validação dos campos
             $formFields = $request->validate([
                 'pacote'.$i => 'required',
-                'imagem'.$i => 'required',
+                'imagem1'.$i => 'required',
+                'imagem2'.$i => 'required',
+                'imagem3'.$i => 'required',
                 'valor'.$i => 'required|numeric|min:0'
             ]);
 
             $input = [
                 'pacote' => $formFields['pacote'.$i],
-                'imagem' => $formFields['imagem'.$i],
+                'imagem1' => $formFields['imagem1'.$i],
+                'imagem2' => $formFields['imagem2'.$i],
+                'imagem3' => $formFields['imagem3'.$i],
                 'valor' => $formFields['valor'.$i]
             ];
             

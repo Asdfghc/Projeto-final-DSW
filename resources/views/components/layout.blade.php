@@ -8,6 +8,7 @@
   <link href="images/favicon.ico" rel="icon"  type="image/x-icon">
   <meta charset="UTF-8">
   <script src="https://unpkg.com/alpinejs" defer></script>
+  <script type="text/javascript" src='https://cdn.tiny.cloud/1/2b8foqu3g5757fekw52v9slhmcpo233ogz0xxptldzo29bdi/tinymce/6/tinymce.min.js'></script>
 </head>
 
 <body>
@@ -153,7 +154,7 @@
     }
   </style>
   <div class="topo">
-      <div>
+    <div>
       <ul>
         @auth
           <li>
@@ -170,9 +171,9 @@
           <li><a href="/cadastro" class="reg">Registrar-se</a></li>
           <li><a href="/login" class="reg">Login</a></li>
         @endauth
-          <a href="/"><img src="images/pato.png" style="float: inline-start; width:60px; height: 30px;padding: 15px; padding-top: 15px;"></a>
+          <a href="/"><img src="{{ asset('images/pato.png') }}" style="float: inline-start; width:60px; height: 30px;padding: 15px; padding-top: 15px;"></a>
       </ul>
-      </div>
+    </div>
   </div>
   <main>
     {{ $slot }}
