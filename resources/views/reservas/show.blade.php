@@ -1,5 +1,10 @@
 <x-layout>
-    <p>Ficamos felizes com sua reserva! Lembre-se de sla chegar antes</p>
+    <p>Recomendações para a pré-festa:
+        @foreach ($recomendacoes as $recomendacao)
+            <br>
+            - {{ $recomendacao->recomendacao }}
+        @endforeach
+    </p>
     <p>Data: {{ date('d/m/Y', strtotime($reserva->dataehora_inicio)) }}</p>
     <p>Horário: {{ date('H:i', strtotime($reserva->dataehora_inicio)) }} até {{ date('H:i', strtotime($reserva->dataehora_fim)) }}</p>
     <p>Status: {{ $reserva->status }}</p>

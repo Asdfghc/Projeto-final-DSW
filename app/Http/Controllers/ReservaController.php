@@ -8,6 +8,7 @@ use App\Models\Agenda;
 use App\Models\Reserva;
 use App\Models\Servico;
 use App\Models\Convidado;
+use App\Models\Recomendacoes;
 use Illuminate\Http\Request;
 use DateTime;
 
@@ -34,7 +35,7 @@ class ReservaController extends Controller
             return redirect('/reservas');
         }
 
-        return view('reservas/show', ['reserva' => $id, 'convidados' => Convidado::where('convuser_id', $id->id)->get(), 'servico' => Servico::find($id->servico)]);
+        return view('reservas/show', ['reserva' => $id, 'convidados' => Convidado::where('convuser_id', $id->id)->get(), 'servico' => Servico::find($id->servico), 'recomendacoes' => Recomendacoes::all()]);
     }
 
     // Mostrar formulário de criação de reserva

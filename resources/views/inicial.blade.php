@@ -108,6 +108,7 @@
       <li><a href="/agenda" class="agende">Agenda</a></li>
       <li><a href="/servicos" class="agende">Pacotes de Comida</a></li>
       <li><a href="/reservas" class="agende">Pedidos</a></li>
+      <li><a href="/recomendacoes" class="agende">Alterar recomendações pré-festa</a></li>
     @endhasanyrole
     @role('admin')
       <li><a href="/pesquisa/index" class="agende">Resultados das pesquisas de Satisfação</a></li>

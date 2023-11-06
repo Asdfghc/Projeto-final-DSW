@@ -9,6 +9,7 @@ use App\Models\Agenda;
 use App\Models\Reserva;
 use App\Models\Servico;
 use App\Models\Convidado;
+use App\Models\Recomendacoes;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;

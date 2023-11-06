@@ -9,6 +9,7 @@ use App\Http\Controllers\ReservaController;
 use App\Http\Controllers\PesquisaController;
 use App\Http\Controllers\ServicosController;
 use App\Http\Controllers\ConvidadoController;
+use App\Http\Controllers\RecomendacoesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -83,3 +84,12 @@ Route::get('/pesquisa', [PesquisaController::class, 'create'])->middleware('auth
 Route::post('/pesquisa', [PesquisaController::class, 'store'])->middleware('auth');
 
 Route::get('/pesquisa/index', [PesquisaController::class, 'index'])->middleware('auth');
+
+
+Route::get('/recomendacoes', [RecomendacoesController::class, 'index'])->middleware('auth');
+
+Route::post('/recomendacoes', [RecomendacoesController::class, 'store'])->middleware('auth');
+
+Route::put('/recomendacoes/edit/{id}', [RecomendacoesController::class, 'update'])->middleware('auth');
+
+Route::delete('/recomendacoes/{id}', [RecomendacoesController::class, 'destroy'])->middleware('auth');
