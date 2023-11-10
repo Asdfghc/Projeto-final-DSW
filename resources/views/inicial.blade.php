@@ -1,6 +1,7 @@
 <x-layout>
   <style>
     body {
+      @unlessrole('admin|comerc|ope')
       background-image: url('images/fazenda.png');
       background-repeat: no-repeat;
       background-size: cover;
@@ -12,6 +13,11 @@
       width: 100%;
       height: 100%;
       box-shadow: 0 0 250px rgba(0,0,0,0.9) inset;
+      @endunlessrole
+      @hasanyrole('admin|comerc|ope')
+      background-image: none;
+      background-color: antiquewhite;
+      @endhasanyrole
     }
 
     .nome {
@@ -61,18 +67,33 @@
       top: 80%;
       left: 50%;
       transform: translate(-50%, -50%);
+      @hasanyrole('admin|comerc|ope')
+      display: inline-block;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      @endhasanyrole
     }
 
     .agende {
       display: block;
-      margin: 0;
+      margin: 5;
       text-align: center;
       font-size: 20px;
       color: gold;
       background-color: #0E0073;
       border-radius: 25px;
     }
+    ul.myUL2 {
+      display: inline-block;
+      position: absolute;
+      top: 60%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
   </style>
+  @unlessrole('admin|comerc|ope')
   <br>
   <div class="placa">
     <img src="images/placa.png" alt="placa">
@@ -95,6 +116,7 @@
     <img src="images/nuvem.png" style="width: 325px; height: 195px;">
     <div class="nuvem2">Verdadeiros Doces <br> de uma Fazenda!</div>
   </div>
+  @endunlessrole
   <br>
   <div>
     <pre>
@@ -102,26 +124,29 @@
       <br>
     </pre>
   </div>
-  <div class="agende">
-   <ul class="myUL">
+  <div>
+    <ul class="myUL">
     @hasanyrole('admin|comerc')
-      <li><a href="/agenda" class="agende">Agenda</a></li>
-      <li><a href="/servicos" class="agende">Pacotes de Comida</a></li>
-      <li><a href="/reservas" class="agende">Pedidos</a></li>
-      <li><a href="/recomendacoes" class="agende">Alterar recomendações pré-festa</a></li>
+      <li><a href="/agenda" role="button" class="botao">Agenda</a></li>
+      <li><a href="/recomendacoes" role="button" class="botao">Alterar recomendações pré-festa</a></li>
+      <li><a href="/servicos" role="button" class="botao">Pacotes de Comida</a></li>
+      <li><a href="/reservas" role="button" class="botao">Pedidos</a></li>
     @endhasanyrole
-    @role('admin')
-      <li><a href="/pesquisa/index" class="agende">Resultados das pesquisas de Satisfação</a></li>
-    @endrole
-    @role('ope')
-      <li><a href="/reservas" class="agende">Lista de Festas</a></li>
-    @endrole
     @unlessrole('admin|ope|comerc')
-      <li><a href="/agendamento" class="agende" style="text-align: center;">Agende sua festa</a></li>
+      <li><a href="/agendamento" role="button" class="botao">Agende sua festa</a></li>
     @endunlessrole
-    @role('user')
-      <li><a href="/pesquisa" class="agende" style="text-align: center;">Pesquisa de satisfação</a></li>
+    @role('ope')
+      <li><a href="/reservas" role="button" class="botao">Lista de Festas</a></li>
     @endrole
-   </ul>
+    @role('user')
+      <li><a href="/pesquisa" role="button" class="botao">Pesquisa de satisfação</a></li>
+    @endrole
+    </ul>
+    <ul>
+    <ul class="myUL2">
+    @role('admin')
+      <li><a href="/pesquisa/index" role="button" class="botao">Resultados das pesquisas de Satisfação</a></li>
+    @endrole
+    </ul>
   </div> 
 </x-layout>

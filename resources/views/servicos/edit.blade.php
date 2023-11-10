@@ -7,7 +7,7 @@
             @foreach($servicos as $servico)
                 <div class="capa">
                     <label for="pacote{{1+$loop->index}}">Pacote {{$servico->id}}</label>
-                    <textarea name="pacote{{1+$loop->index}}" id="editor"></textarea>
+                    <textarea name="pacote{{1+$loop->index}}" id="editor" value=""></textarea>
                     <script>
                         tinymce.init({
                             selector: "#editor",

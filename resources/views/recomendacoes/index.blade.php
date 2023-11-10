@@ -1,6 +1,6 @@
 <x-layout>
     <br>
-    <h1 style="text-align: center; color: #0E0073;"> Faça seu pedido</h1>  
+    <h1 style="text-align: center; color: #0E0073;"> Qual a nova recomendação? </h1>  
     <br>
     <br>
     <div style="text-align: center;">
@@ -19,31 +19,33 @@
             <br>
             <div class="a">
                 <ul class="myUL">
-                    <button class="botao">Confirmar recomendação</button>
+                    <button class="botao" style="border-radius: 5px;">Confirmar recomendação</button>
                 </ul>
             </div>
         </form>
         <br>
         <br>
         <br>
-        <br>
         <div class="capa">
-        @foreach($recomendacoes as $recomendacao)
+            @foreach($recomendacoes as $recomendacao)
             <p>{{$recomendacao->recomendacao}}</p>
-            <br>
             <form action="/recomendacoes/edit/{{$recomendacao->id}}" method="POST">
                 @csrf
                 @method('PUT')
                 <textarea name="recomendacao" placeholder="Recomendação" value="">{{$recomendacao->recomendacao}}</textarea>
+                <br>
+                <br>
                 <button type="submit">Editar recomendação</button>
             </form>
             <br>
             <form action="/recomendacoes/{{$recomendacao->id}}" method="POST">
                 @csrf
                 @method('DELETE')
-                <button type="submit">Excluir recomendação</button>
+                <button type="submit"">Excluir recomendação</button>
+                <br>
+                <br>
             </form>
-        @endforeach
+            @endforeach
         </div>
     </div>
 </x-layout>
