@@ -16,12 +16,8 @@
                 @enderror
             </div>
             <br>
-            <br>
             <div class="capa">
-                <a href="/agenda" target="_blank">Clique aqui para ver nossos horários!</a>
-                <br>
-                <br>
-                
+            
                 <label for="data">Dia</label>
                 <br>
                 <input type="date" name="data" value="{{old('data')}}"/>
@@ -29,19 +25,18 @@
                 @error('data')
                     <p>{{ $message }}</p>
                 @enderror
-
                 <br>
                 <br>
-                <label for="hora_inicio">Dia e horário do início</label>
+                <label for="hora_inicio">Horário do início</label>
                 <br>
                 <input type="time" name="hora_inicio" value="{{old('hora_inicio')}}"/>
 
                 @error('hora_inicio')
                     <p>{{ $message }}</p>
                 @enderror
-            <br>
-            <br>
-                <label for="hora_fim">Dia e horário do final</label>
+                <br>
+                <br>
+                <label for="hora_fim">Horário do final</label>
                 <br>
                 <input type="time" name="hora_fim" value="{{old('hora_fim')}}"/>
 
@@ -50,6 +45,9 @@
                 @enderror
             </div>
             <br>
+            <div>
+                <a href="/agenda" target="_blank" role="button" class="botao"  style="border-radius: 10px;">Clique aqui para ver nossos horarios</a>
+            </div>
             <br>
             <div class="capa">
                 <label for="nconvidados">Número aproximado de convidados</label>
@@ -72,23 +70,24 @@
                 @enderror
             </div>
             <br>
-            <br>
             <div class="capa">
-                <a href="/servicos" target="_blank">Clique aqui para ver nossos pacotes!</a>
                 <label for="servico">Serviço</label>
+                <br>
                 <select name="servico">
                     <option value="1">Pacote 1</option>
                     <option value="2">Pacote 2</option>
                     <option value="3">Pacote 3</option>
                 </select>
-
                 @error('servico')
                     <p>{{ $message }}</p>
                 @enderror
             </div>
             <br>
+            <div>
+                <a href="/servicos" target="_blank" role="button"  style="border-radius: 10px;" class="botao">Clique aqui para ver nossos pacotes!</a>
+            </div>
             <br>
-
+            <br>
             <div class="a">
                 <ul class="myUL">
                   <button class="botao">Confirmar reserva</button>

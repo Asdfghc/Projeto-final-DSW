@@ -1,7 +1,7 @@
 <x-layout>
     <br>
     <h1 style="text-align: center; color: #0E0073;"> Edição de serviço</h1>
-    <p>ATENÇÃO<br>Editar seu serviço deixará a reserva pendente e pode resultar em alterações no valor final da sua reserva.</p>  
+    <h3>ATENÇÃO</h3><br><p>Editar seu serviço deixará a reserva pendente e pode resultar em alterações no valor final da sua reserva.</p>  
     <a href="/servicos" target="_blank">Clique aqui para ver os serviços disponíveis</a>
     <div style="text-align: center;">
         <form method="POST" action="/reserva/{{$reserva->id}}">
