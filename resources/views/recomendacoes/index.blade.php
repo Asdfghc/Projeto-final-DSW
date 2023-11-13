@@ -12,7 +12,7 @@
                 <input type="text" name="recomendacao" placeholder="Recomendação" value="{{old('recomendacao')}}"/>
 
                 @error('recomendacao')
-                    <p>{{ $message }}</p>
+                    <p>Recomendação Inválida</p>
                 @enderror
             </div>
             <br>

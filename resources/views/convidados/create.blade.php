@@ -39,7 +39,7 @@
                     <input type="text" name="name1" placeholder="Nome" value="{{old('name1')}}"/>
 
                     @error('name1')
-                        <p>{{ $message }}</p>
+                        <p>Nome Inválido</p>
                     @enderror
                 </div>
                 <br>
@@ -50,7 +50,7 @@
                     <input type="number" step="1" name="idade1" max="100" min="0" value="{{old('idade1')}}"/>
 
                     @error('idade1')
-                        <p>{{ $message }}</p>
+                        <p>Idade Inválida</p>
                     @enderror
                 </div>
                 <br>
@@ -62,7 +62,7 @@
                 OnKeyPress="formatar('###.###.###-##',this)" value="{{old('CPF1')}}"/>
 
                     @error('CPF1')
-                        <p>{{ $message }}</p>
+                        <p>CPF Inválido</p>
                     @enderror
                 </div>
                 <br>

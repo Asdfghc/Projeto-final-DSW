@@ -12,7 +12,7 @@
                 <input type="text" name="nome" placeholder="nome" value="{{old('nome')}}"/>
 
                 @error('nome')
-                    <p>{{ $message }}</p>
+                    <p>Nome Inválido</p>
                 @enderror
             </div>
             <br>
@@ -23,7 +23,7 @@
                 <input type="date" name="data" value="{{old('data')}}"/>
 
                 @error('data')
-                    <p>{{ $message }}</p>
+                    <p>Data Inválida</p>
                 @enderror
                 <br>
                 <br>
@@ -32,7 +32,7 @@
                 <input type="time" name="hora_inicio" value="{{old('hora_inicio')}}"/>
 
                 @error('hora_inicio')
-                    <p>{{ $message }}</p>
+                    <p>Hora Inválida</p>
                 @enderror
                 <br>
                 <br>
@@ -41,7 +41,7 @@
                 <input type="time" name="hora_fim" value="{{old('hora_fim')}}"/>
 
                 @error('hora_fim')
-                    <p>{{ $message }}</p>
+                    <p>Hora Inválida</p>
                 @enderror
             </div>
             <br>
@@ -55,7 +55,7 @@
                 <input type="number" step="1" name="nconvidados" value="{{old('nconvidados')}}"/>
 
                 @error('nconvidados')
-                    <p>{{ $message }}</p>
+                    <p>Numero Inválido</p>
                 @enderror
             </div>
             <br>
@@ -66,7 +66,7 @@
                 <input type="number" step="1" name="idade" value="{{old('idade')}}"/>
 
                 @error('idade')
-                    <p>{{ $message }}</p>
+                    <p>Idade Inválida</p>
                 @enderror
             </div>
             <br>
@@ -79,7 +79,7 @@
                     <option value="3">Pacote 3</option>
                 </select>
                 @error('servico')
-                    <p>{{ $message }}</p>
+                    <p>Escolha um dos Possiveis Serviços</p>
                 @enderror
             </div>
             <br>
