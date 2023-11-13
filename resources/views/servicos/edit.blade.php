@@ -7,10 +7,10 @@
             @foreach($servicos as $servico)
                 <div class="capa">
                     <label for="pacote{{1+$loop->index}}">Pacote {{$servico->id}}</label>
-                    <textarea name="pacote{{1+$loop->index}}" id="editor" value=""></textarea>
+                    <textarea name="pacote{{1+$loop->index}}" id="editor{{$loop->index}}" value=""></textarea>
                     <script>
                         tinymce.init({
-                            selector: "#editor",
+                            selector: "#editor{{$loop->index}}",
                             setup: function (editor) {
                                 editor.on('init', function () {
                                     editor.setContent('{!! $servico->pacote !!}');
@@ -22,19 +22,19 @@
                 <br>
                 <br>
                 <div class="capa">
-                    <label for="imagem1{{1+$loop->index}}">Imagem do pacote {{$servico->id}}</label>
+                    <label for="imagem1{{1+$loop->index}}">Imagem 1 do pacote {{$servico->id}}</label>
                     <input type="text" name="imagem1{{1+$loop->index}}" value="{{$servico->imagem1}}"/>
                 </div>
                 <br>
                 <br>
                 <div class="capa">
-                    <label for="imagem2{{1+$loop->index}}">Imagem do pacote {{$servico->id}}</label>
+                    <label for="imagem2{{1+$loop->index}}">Imagem 2 do pacote {{$servico->id}}</label>
                     <input type="text" name="imagem2{{1+$loop->index}}" value="{{$servico->imagem2}}"/>
                 </div>
                 <br>
                 <br>
                 <div class="capa">
-                    <label for="imagem3{{1+$loop->index}}">Imagem do pacote {{$servico->id}}</label>
+                    <label for="imagem3{{1+$loop->index}}">Imagem 3 do pacote {{$servico->id}}</label>
                     <input type="text" name="imagem3{{1+$loop->index}}" value="{{$servico->imagem3}}"/>
                 </div>
                 <br>

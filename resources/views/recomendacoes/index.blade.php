@@ -41,7 +41,7 @@
             <form action="/recomendacoes/{{$recomendacao->id}}" method="POST">
                 @csrf
                 @method('DELETE')
-                <button type="submit"">Excluir recomendação</button>
+                <button type="submit">Excluir recomendação</button>
                 <br>
                 <br>
             </form>

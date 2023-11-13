@@ -1,5 +1,5 @@
 <x-layout>
-    <h1 style="font-size: 40px; text-align: center;">Ficamos felizes com sua reserva! Lembre-se de chegar antes</h1>
+    <h1 style="font-size: 40px; text-align: center;">Ficamos felizes com sua reserva!</h1>
     <table style="width:90%; text-align: center; background-color: #0E0073;">
         <tr>
             <th>Data
@@ -36,6 +36,14 @@
     </div>
     <br>
     <br>
+    <div class="capa">
+        <p style="font-size: 27px; text-align: left; padding: 5px; margin: 5px"><b>Recomendações:</b></p>
+        @foreach($recomendacoes as $recomendacao)
+            <p style="font-size: 25px; text-align: left; padding: 5px; margin: 5px"><br>- {{ $recomendacao->recomendacao }}</p>
+        @endforeach
+    </div>
+    <br>
+    <br>
     @if ($reserva->status == 'ACEITO')
     <div class="capa">
         <p style="font-size: 25px; text-align: center; padding: 5px; margin: 5px"> Link para convidados <br><a href="/convidado/{{$reserva->id}}" target="_blank" style="color: gold"><b>Clique aqui</b></a></p>
@@ -45,6 +53,10 @@
             <table style="width:90%; text-align: center; background-color: #0E0073;">
                 <tr>
                     <th>Nome
+                    @hasanyrole('admin|comerc|ope')
+                    <th>Idade
+                    <th>CPF
+                    @endhasanyrole
                     @role('ope')
                     <th>Presença
                     @endrole
@@ -55,6 +67,10 @@
                     
                     <tr>
                         <td>{{$convidado->name}}</td>
+                        @hasanyrole('admin|comerc|ope')
+                        <td>{{$convidado->idade}}</td>
+                        <td>{{$convidado->CPF}}</td>
+                        @endhasanyrole
                         @role('ope')
                         <td>
                         <form>

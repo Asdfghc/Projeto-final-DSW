@@ -19,8 +19,8 @@ class ConvidadoController extends Controller
         while ($request->input('name'.$i) != null) {
             //Validação dos campos
             $formFields = $request->validate([
-                'name'.$i => 'required',
-                'idade'.$i => 'required',
+                'name'.$i => 'required|min:3|max:100',
+                'idade'.$i => 'required|integer|min:0|max:150',
                 'CPF'.$i => 'required'
             ]);
 

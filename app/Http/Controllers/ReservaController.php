@@ -56,13 +56,13 @@ class ReservaController extends Controller
     // Armazenar reserva no banco de dados
     public function store(Request $request) {
         $formFields = $request->validate([
-            'nome' => 'required',
-            'data' => 'required',
-            'hora_inicio' => 'required',
-            'hora_fim' => 'required',
-            'servico' => 'required',
-            'nconvidados' => 'required',
-            'idade' => 'required'
+            'nome' => 'required|min:3|max:100',
+            'data' => 'required|date|after_or_equal:today',
+            'hora_inicio' => 'required|before:hora_fim',
+            'hora_fim' => 'required|after:hora_inicio',
+            'servico' => 'required|numeric|min:1|max:3',
+            'nconvidados' => 'required|numeric|min:0|max:250',
+            'idade' => 'required|numeric|min:0|max:150',
         ]);
 
         $formFields['dataehora_inicio'] = $formFields['data'].' '.$formFields['hora_inicio'];
