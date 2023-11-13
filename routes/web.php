@@ -60,6 +60,10 @@ Route::get('/convidado/{id}', [ConvidadoController::class, 'create']);
 
 Route::post('/convidado/{id}', [ConvidadoController::class, 'store']);
 
+Route::get('/convidado/{id}/presente', [ConvidadoController::class, 'presente']);
+
+Route::get('/convidado/{id}/ausente', [ConvidadoController::class, 'ausente']);
+
 Route::delete('/convidado/{id}', [ConvidadoController::class, 'destroy'])->middleware('auth');
 
 

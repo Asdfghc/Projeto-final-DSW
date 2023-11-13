@@ -11,6 +11,7 @@
                 <label for="name">Nome</label>
                 <input type="text" name="name" value="{{old('name')}}"/>
 
+                <p>(O nome deve conter no mínimo 3 caracteres)</p>
                 @error('name')
                     <p>{{ $message }}</p>
                 @enderror
@@ -31,6 +32,7 @@
                 <label for="password">Senha</label>
                 <input type="password" name="password" value="{{old('password')}}"/>
 
+                <p>(A senha deve conter no mínimo 6 caracteres)</p>
                 @error('password')
                     <p>Senha Inválida</p>
                 @enderror

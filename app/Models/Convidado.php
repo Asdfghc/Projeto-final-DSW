@@ -13,6 +13,7 @@ class Convidado extends Model
         'name',
         'idade',
         'CPF',
+        'confirmado',
         'convuser_id'];
 
     // Relação com a reserva

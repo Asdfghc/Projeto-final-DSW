@@ -39,6 +39,24 @@ class ConvidadoController extends Controller
         return redirect()->back()->with('mensagem', 'Convidado cadastrado com sucesso!');
     }
 
+    // Marca um convidado como presente
+    public function presente($id) {
+        $convidado = Convidado::findOrFail($id);
+        $convidado->confirmado = true;
+        $convidado->save();
+
+        return redirect()->back()->with('mensagem', 'Convidado marcado como presente!');
+    }
+
+    // Marca um convidado como ausente
+    public function ausente($id) {
+        $convidado = Convidado::findOrFail($id);
+        $convidado->confirmado = false;
+        $convidado->save();
+
+        return redirect()->back()->with('mensagem', 'Convidado marcado como ausente!');
+    }
+
     // Deletar convidado do banco de dados
     public function destroy($id) {
         

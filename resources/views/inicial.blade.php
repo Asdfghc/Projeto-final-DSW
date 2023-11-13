@@ -134,6 +134,7 @@
     @endhasanyrole
     @unlessrole('admin|ope|comerc')
       <li><a href="/agendamento" role="button" class="botao">Agende sua festa</a></li>
+      <li><a href="/servicos" role="button" class="botao">Veja nossos pacotes</a></li>
     @endunlessrole
     @role('ope')
       <li><a href="/reservas" role="button" class="botao">Lista de Festas</a></li>

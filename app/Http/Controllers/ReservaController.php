@@ -21,7 +21,7 @@ class ReservaController extends Controller
             return view('reservas/index', ['reservas' => Reserva::where('user_id', auth()->id())->where('dataehora_fim', '>', Carbon::now('Brazil/East')->toDateTimeString())->orderBy('dataehora_inicio', 'ASC')->get()]);
         }
         elseif ($user->hasRole('ope')) {
-            return view('reservas/index', ['reservas' => Reserva::where('status', 'ACEITO')->where('dataehora_fim', '>', Carbon::now('Brazil/East')->toDateTimeString())->orderBy('dataehora_inicio', 'ASC')->get()]);
+            return view('reservas/index', ['reservas' => Reserva::where('status', 'ACEITO')->where('dataehora_fim', '>', Carbon::now('Brazil/East')->subDay()->toDateTimeString())->orderBy('dataehora_inicio', 'ASC')->get()]);
         }
         else {
             return view('reservas/index', ['reservas' => Reserva::where('dataehora_fim', '>', Carbon::now('Brazil/East')->toDateTimeString())->orderBy('dataehora_inicio', 'ASC')->get(), 'reservas_passadas']);
@@ -35,7 +35,9 @@ class ReservaController extends Controller
             return redirect('/reservas');
         }
 
-        return view('reservas/show', ['reserva' => $id, 'convidados' => Convidado::where('convuser_id', $id->id)->get(), 'servico' => Servico::find($id->servico), 'recomendacoes' => Recomendacoes::all()]);
+        return view('reservas/show', ['reserva' => $id, 'convidados' => Convidado::where('convuser_id', $id->id)->get(),
+        'servico' => Servico::find($id->servico), 'recomendacoes' => Recomendacoes::all(),
+        'nconvidados' => Convidado::where('convuser_id', $id->id)->count(), 'nconvidados_confirmados' => Convidado::where('convuser_id', $id->id)->where('confirmado', '1')->count()]);
     }
 
     // Mostrar formulário de criação de reserva
@@ -57,9 +59,9 @@ class ReservaController extends Controller
     public function store(Request $request) {
         $formFields = $request->validate([
             'nome' => 'required|min:3|max:100',
-            'data' => 'required|date|after_or_equal:today',
-            'hora_inicio' => 'required|before:hora_fim',
-            'hora_fim' => 'required|after:hora_inicio',
+            'data' => 'required|date',
+            'hora_inicio' => 'required',
+            'hora_fim' => 'required',
             'servico' => 'required|numeric|min:1|max:3',
             'nconvidados' => 'required|numeric|min:0|max:250',
             'idade' => 'required|numeric|min:0|max:150',
@@ -68,7 +70,7 @@ class ReservaController extends Controller
         $formFields['dataehora_inicio'] = $formFields['data'].' '.$formFields['hora_inicio'];
         $formFields['dataehora_fim'] = $formFields['data'].' '.$formFields['hora_fim'];
 
-        if($formFields['dataehora_inicio'] > $formFields['dataehora_fim']) {
+        if($formFields['dataehora_inicio'] >= $formFields['dataehora_fim']) {
             return redirect('/agendamento')->with('mensagem', 'A data de início não pode ser maior que a data de fim!');
         }
         if($formFields['dataehora_inicio'] < Carbon::now('Brazil/East')->toDateTimeString()) {
@@ -96,7 +98,7 @@ class ReservaController extends Controller
         $reservas = Reserva::where('status', 'ACEITO')->get();
         foreach($reservas as $reserva) {
             // Verifica se a reserva que está sendo criada está dentro de alguma reserva aceita
-            if($formFields['dataehora_inicio'] >= $reserva->dataehora_inicio && $formFields['dataehora_inicio'] <= $reserva->dataehora_fim) {
+            if($formFields['dataehora_inicio'] >= $reserva->dataehora_inicio && $formFields['dataehora_inicio'] < $reserva->dataehora_fim) {
                 return redirect('/agendamento')->with('mensagem', 'A reserva não pode ser criada pois concide com outra reserva aceita!');
             }
             // Verifica se a reserva que está sendo criada está dentro de alguma reserva aceita
@@ -104,7 +106,7 @@ class ReservaController extends Controller
                 return redirect('/agendamento')->with('mensagem', 'A reserva não pode ser criada pois concide com outra reserva aceita!');
             }
             // Verifica se a reserva que está sendo criada está dentro de alguma reserva aceita
-            elseif($formFields['dataehora_fim'] >= $reserva->dataehora_inicio && $formFields['dataehora_fim'] <= $reserva->dataehora_fim) {
+            elseif($formFields['dataehora_fim'] > $reserva->dataehora_inicio && $formFields['dataehora_fim'] <= $reserva->dataehora_fim) {
                 return redirect('/agendamento')->with('mensagem', 'A reserva não pode ser criada pois concide com outra reserva aceita!');
             }
             // Verifica se a reserva que está sendo criada está dentro de alguma reserva aceita

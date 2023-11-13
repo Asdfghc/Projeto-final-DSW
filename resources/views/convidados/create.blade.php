@@ -28,13 +28,15 @@
     </script>
     <br>
     <div style="text-align: center;">
+        @unlessrole('ope|admin|comerc')
         <h1 style="color: #0E0073;">Parabéns!!<br> Você foi chamado para a festa de {{ $nome }}</h1>
+        @endunlessrole
         <form method="POST" action="/convidado/{{$id->id}}">
             @csrf
             <div class="conv">
                 <h3 class="titulo">Convidado 1</h3>
                 <div class="capa">
-                    <label for="name1">name</label>
+                    <label for="name1">Nome</label>
                     <br>
                     <input type="text" name="name1" placeholder="Nome" value="{{old('name1')}}"/>
 

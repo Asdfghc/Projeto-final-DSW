@@ -15,8 +15,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('convuser_id')->onDelete('cascade');
             $table->string('name');
-            $table->string('CPF');
             $table->integer('idade');
+            $table->string('CPF');
+            $table->boolean('confirmado')->default(false);
             $table->rememberToken();
             $table->timestamps();
         });
