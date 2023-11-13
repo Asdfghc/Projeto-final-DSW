@@ -10,7 +10,7 @@
             <input type="email" name="email" value="{{old('email')}}"/>
 
             @error('email')
-                <p>{{ $message }}</p>
+                <p>Email Inválido</p>
             @enderror
         </div>
 
@@ -21,7 +21,7 @@
             <input type="password" name="password" value="{{old('password')}}"/>
 
             @error('password')
-                <p>{{ $message }}</p>
+                <p>Senha Inválida</p>
             @enderror
         </div>
 
