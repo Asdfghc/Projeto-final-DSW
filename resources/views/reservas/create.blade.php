@@ -74,9 +74,9 @@
                 <label for="servico">Serviço</label>
                 <br>
                 <select name="servico">
-                    <option value="1">Pacote 1</option>
-                    <option value="2">Pacote 2</option>
-                    <option value="3">Pacote 3</option>
+                    @for ($i = 1; $i <= $nservicos; $i++)
+                        <option value="{{$i}}">Pacote {{$i}}</option>
+                    @endfor
                 </select>
                 @error('servico')
                     <p>Escolha um dos Possiveis Serviços</p>

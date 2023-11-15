@@ -24,7 +24,7 @@ class ReservaController extends Controller
             return view('reservas/index', ['reservas' => Reserva::where('status', 'ACEITO')->where('dataehora_fim', '>', Carbon::now('Brazil/East')->subDay()->toDateTimeString())->orderBy('dataehora_inicio', 'ASC')->get()]);
         }
         else {
-            return view('reservas/index', ['reservas' => Reserva::where('dataehora_fim', '>', Carbon::now('Brazil/East')->toDateTimeString())->orderBy('dataehora_inicio', 'ASC')->get(), 'reservas_passadas']);
+            return view('reservas/index', ['reservas' => Reserva::where('dataehora_fim', '>', Carbon::now('Brazil/East')->toDateTimeString())->orderBy('dataehora_inicio', 'ASC')->get()]);
         }
     }
 
@@ -52,7 +52,7 @@ class ReservaController extends Controller
             '6' => 'Sábado',
         ];
         
-        return view('reservas/create', ['agendas' => Agenda::all(), 'weekMap' => $weekMap]);
+        return view('reservas/create', ['nservicos' => Servico::all()->count()]);
     }
 
     // Armazenar reserva no banco de dados
@@ -62,7 +62,7 @@ class ReservaController extends Controller
             'data' => 'required|date',
             'hora_inicio' => 'required',
             'hora_fim' => 'required',
-            'servico' => 'required|numeric|min:1|max:3',
+            'servico' => 'required|numeric',
             'nconvidados' => 'required|numeric|min:0|max:250',
             'idade' => 'required|numeric|min:0|max:150',
         ]);

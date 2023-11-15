@@ -60,18 +60,24 @@ Route::get('/convidado/{id}', [ConvidadoController::class, 'create']);
 
 Route::post('/convidado/{id}', [ConvidadoController::class, 'store']);
 
-Route::get('/convidado/{id}/presente', [ConvidadoController::class, 'presente']);
+Route::get('/convidado/{id}/presente', [ConvidadoController::class, 'presente'])->middleware('auth');
 
-Route::get('/convidado/{id}/ausente', [ConvidadoController::class, 'ausente']);
+Route::get('/convidado/{id}/ausente', [ConvidadoController::class, 'ausente'])->middleware('auth');
 
 Route::delete('/convidado/{id}', [ConvidadoController::class, 'destroy'])->middleware('auth');
 
 
 Route::get('/servicos', [ServicosController::class, 'index']);
 
+Route::get('/servicos/create', [ServicosController::class, 'create'])->middleware('auth');
+
+Route::post('/servicos', [ServicosController::class, 'store'])->middleware('auth');
+
 Route::get('/servicos/edit', [ServicosController::class, 'edit'])->middleware('auth');
 
 Route::put('/servicos', [ServicosController::class, 'update'])->middleware('auth');
+
+Route::delete('/servicos/{id}', [ServicosController::class, 'destroy'])->middleware('auth');
 
 
 Route::get('/agenda', [AgendaController::class, 'index'])->middleware('auth');

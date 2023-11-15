@@ -14,9 +14,13 @@
             <div class="capa">
                 <label for="servico">Serviço</label>
                 <select name="servico">
-                    <option value="1">Pacote 1</option>
-                    <option value="2">Pacote 2</option>
-                    <option value="3">Pacote 3</option>
+                    @for ($i = 0; $i < count($servicos); $i++)
+                        @if($servicos[$i]->id == $servico_atual->id)
+                            <option value="{{$servicos[$i]->id}}" selected>Pacote {{$servicos[$i]->id}}</option>
+                        @else
+                            <option value="{{$servicos[$i]->id}}">Pacote {{$servicos[$i]->id}}</option>
+                        @endif
+                    @endfor
                 </select>
 
                 @foreach($servicos as $servico)

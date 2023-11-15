@@ -79,7 +79,7 @@
             <br>
             <div class="a">
                 <ul class="myUL">
-                    <button class="botao">Confirmar reserva</button>
+                    <button class="botao">Confirmar presença</button>
                 </ul>
             </div>
         </form>

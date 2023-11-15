@@ -13,7 +13,13 @@
 
 <body>
   <style>
+    @font-face{
+        font-family: 'Renogare-Regular';
+        src: url({{asset('fonts/Renogare-Regular.ttf')}});
+    }
+
     body {
+        font-family: 'Renogare-Regular';
         margin: 0;
         background-color: antiquewhite;
     }
@@ -29,8 +35,10 @@
         background-color: #0E0073;
         border-radius: 25px;
         margin: 4px 2px;
+        font-size: 20px;
     }
     .botao{
+        font-family: 'Renogare-Regular';
         background-color: #0E0073;
         border: none;
         border-radius: 25px;
@@ -38,7 +46,7 @@
         padding: 16px 32px;
         text-decoration: none;
         display: inline-block;
-        font-size: 15px;
+        font-size: 20px;
         margin: 4px 2px;
         cursor: pointer;
     }
@@ -174,12 +182,13 @@
     }
 
     .sair{
+      font-family: 'Renogare-Regular';
       text-decoration: none;
       display: inline-block;
       background-color: #003C74;
       color: gold;
       font-size: 25px;
-      padding: 18px 15px;
+      padding: 20px 15px;
       border: none;
     }
 
@@ -208,7 +217,7 @@
           @unlessrole('admin|comerc|ope')
           <li><a href="/reservas">Minhas Compras</a></li>
           @endunless
-          <li style="padding: 15px; padding-top: 15px;">Bem vindo(a) {{ auth()->user()->name }}</li>
+          <li style="padding: 15px; padding-top: 15px;">Bem vindo(a), {{ auth()->user()->name }}</li>
           @else
             <li><a href="/cadastro">Registrar-se</a></li>
             <li><a href="/login">Login</a></li>

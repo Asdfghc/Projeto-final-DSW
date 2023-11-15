@@ -21,7 +21,7 @@
     }
 
     .nome {
-      font-size: 45px;
+      font-size: 35px;
       position: absolute;
       top: 30%;
       left: 50%;
@@ -42,18 +42,18 @@
 
     .nuvem1 {
       position: absolute;
-      top: 53%;
+      top: 55%;
       left: 42%;
       transform: translate(-50%, -50%);
-      font-size: 20px;
+      font-size: 17px;
     }
 
     .nuvem2 {
       position: absolute;
       top: 53%;
-      left: 76.6%;
+      left: 76.8%;
       transform: translate(-50%, -50%);
-      font-size: 20px;
+      font-size: 17px;
     }
 
     .comida {
@@ -128,9 +128,9 @@
     <ul class="myUL">
     @hasanyrole('admin|comerc')
       <li><a href="/agenda" role="button" class="botao">Agenda</a></li>
-      <li><a href="/recomendacoes" role="button" class="botao">Alterar recomendações pré-festa</a></li>
       <li><a href="/servicos" role="button" class="botao">Pacotes de Comida</a></li>
       <li><a href="/reservas" role="button" class="botao">Pedidos</a></li>
+      <li><a href="/recomendacoes" role="button" class="botao">Alterar recomendações pré-festa</a></li>
     @endhasanyrole
     @unlessrole('admin|ope|comerc')
       <li><a href="/agendamento" role="button" class="botao">Agende sua festa</a></li>
@@ -142,9 +142,6 @@
     @role('user')
       <li><a href="/pesquisa" role="button" class="botao">Pesquisa de satisfação</a></li>
     @endrole
-    </ul>
-    <ul>
-    <ul class="myUL2">
     @role('admin')
       <li><a href="/pesquisa/index" role="button" class="botao">Resultados das pesquisas de Satisfação</a></li>
     @endrole

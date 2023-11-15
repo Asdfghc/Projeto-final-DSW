@@ -3,6 +3,8 @@
     @hasanyrole('admin|comerc')
     <br>
     <a href="/servicos/edit" role="button" class="botao">Edição dos pacotes</a>
+    <br>
+    <a href="/servicos/create" role="button" class="botao">Criação de pacotes</a>
     @endhasanyrole
     <br>
     @foreach($servicos as $servico)
@@ -12,6 +14,14 @@
         <img src="{{ $servico->imagem2 }}" alt="Imagem2" width="150px">
         <img src="{{ $servico->imagem3 }}" alt="Imagem3" width="150px">
         <p>Valor: R$ {{ $servico->valor }} por convidado</p>
+    </div>
+    <br>
+    <div class="capa">
+        <form action="/servicos/{{ $servico->id }}" method="POST">
+            @csrf
+            @method('delete')
+            <button type="submit" class="botao">Excluir</button>
+        </form>
     </div>
     <br>
     <br>

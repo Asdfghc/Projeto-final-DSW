@@ -20,8 +20,6 @@ class ServicosController extends Controller
             return redirect('/');
         }
         return view('servicos/edit', ['servicos' => Servico::all()]);
-
-
     }
 
     //Atualizar os serviços
@@ -30,7 +28,8 @@ class ServicosController extends Controller
         if ($user->hasRole('user') || $user->hasRole('ope')) {
             return redirect('/');
         }
-        for($i = 1; $i <= 3; $i++) {
+        $i = 1;
+        while($request->input('pacote'.$i) != null) {
             //Validação dos campos
             $formFields = $request->validate([
                 'pacote'.$i => 'required',
@@ -50,7 +49,62 @@ class ServicosController extends Controller
             
             //Atualiza a linha da tabela
             Servico::where('id', $i)->update($input);
+            $i++;
         }
         return redirect('/servicos')->with('mensagem', 'Serviços atualizados com sucesso!');
+    }
+
+    //Mostrar a tela de criação dos serviços
+    public function create() {
+        $user = User::find(auth()->id());
+        if ($user->hasRole('user') || $user->hasRole('ope')) {
+            return redirect('/');
+        }
+        return view('servicos/create');
+    }
+
+    //Salvar os serviços
+    public function store(Request $request) {
+        $user = User::find(auth()->id());
+        if ($user->hasRole('user') || $user->hasRole('ope')) {
+            return redirect('/');
+        }
+        //Validação dos campos
+        $formFields = $request->validate([
+            'pacote' => 'required',
+            'imagem1' => 'required',
+            'imagem2' => 'required',
+            'imagem3' => 'required',
+            'valor' => 'required|numeric|min:0'
+        ]);
+
+        //Cria uma nova linha na tabela no menor id vazio
+        Servico::create($formFields);
+
+        //Diminui o id da nova linha criada até o primeiro id vazio
+        $i = Servico::max('id');
+        while($i > 0) {
+            if(Servico::find($i) == null) {
+                Servico::where('id', '>', $i)->decrement('id');
+            }
+            $i--;
+        }
+
+        return redirect('/servicos')->with('mensagem', 'Serviço cadastrado com sucesso!');
+    }
+
+    //Deletar um serviço
+    public function destroy($id) {
+        $user = User::find(auth()->id());
+        if ($user->hasRole('user') || $user->hasRole('ope')) {
+            return redirect('/');
+        }
+
+        //Deleta a linha da tabela
+        Servico::destroy($id);
+        //Diminui o id de todos os serviços com id maior que o deletado
+        Servico::where('id', '>', $id)->decrement('id');
+
+        return redirect('/servicos')->with('mensagem', 'Serviço deletado com sucesso!');
     }
 }

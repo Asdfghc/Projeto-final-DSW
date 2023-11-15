@@ -117,7 +117,7 @@
         </div>
         @endhasanyrole
     </div>
-    @else
+    @elseif ($reserva->status == 'NEGADO')
         <p style="font-size: 50px; text-align: center; padding: 5px; margin: 5px">Infelizmente não foi possível realizar sua reserva. Por favor, tente uma nova data e horário.</p>
     @endif
 
