@@ -6,7 +6,7 @@
 ### SETUP Passo a passo
 Clone Repositório
 ```sh
-git clone -b Producao https://github.com/Asdfghc/Projeto-final-DSW.git app-laravel
+git clone -b main https://github.com/Asdfghc/Proj-final-DSW.git app-laravel
 ```
 ```sh
 cd app-laravel
@@ -21,7 +21,7 @@ cp .env.example .env
 
 Atualize as variáveis de ambiente do arquivo .env
 ```dosini
-APP_NAME=Larave
+APP_NAME=Laravel
 APP_URL=http://localhost:8989
 
 DB_CONNECTION=mysql
