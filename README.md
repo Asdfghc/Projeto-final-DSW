@@ -83,12 +83,19 @@ Acesse o projeto
 ###Informações adicionais
 
 Por padrão, são criadas 3 tipos de contas, além das contas criadas por usuários. Essas contas são:
+
 -Administrativa
+
     Email:admin@staff.com
     Senha:admin
+    
 -Operacional
+
     Email:ope@staff.com
     Senha:ope
+    
 -Comercial
+
     Email:comerc@staff.com
     Senha:comerc
+    
