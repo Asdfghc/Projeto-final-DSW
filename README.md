@@ -1,6 +1,9 @@
 # Projeto final de Desenvolvimento de Sistemas Web
 
-(Descrição)
+Projeto final para o curso PI: Desenvolvimento de Sistemas Web da PUC-Campinas 2023
+
+Este repositório se trata de um sistema web que simula um site público de um buffet infantil de festas.
+O site é capaz de fazer o registro de usuários, cadastro de reservas de horário, cadastro de convidados, etc.
 
 
 ### SETUP Passo a passo
@@ -8,10 +11,10 @@ Clone Repositório
 ```sh
 git clone -b main https://github.com/Asdfghc/Proj-final-DSW.git app-laravel
 ```
+
 ```sh
 cd app-laravel
 ```
-
 
 Crie o Arquivo .env
 ```sh
@@ -75,3 +78,17 @@ php artisan migrate --seed
 
 Acesse o projeto
 [http://localhost:8989](http://localhost:8989)
+
+
+###Informações adicionais
+
+Por padrão, são criadas 3 tipos de contas, além das contas criadas por usuários. Essas contas são:
+-Administrativa
+    Email:admin@staff.com
+    Senha:admin
+-Operacional
+    Email:ope@staff.com
+    Senha:ope
+-Comercial
+    Email:comerc@staff.com
+    Senha:comerc
