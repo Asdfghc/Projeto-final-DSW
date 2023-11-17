@@ -1,7 +1,15 @@
 <?php
 
+use App\Models\Convidado;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\AgendaController;
+use App\Http\Controllers\ReservaController;
+use App\Http\Controllers\PesquisaController;
+use App\Http\Controllers\ServicosController;
+use App\Http\Controllers\ConvidadoController;
+use App\Http\Controllers\RecomendacoesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,17 +23,83 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('listamentos');
+    return view('inicial');
 });
-//http://localhost:8989/
 
-Route::get('/horas/{h}', function ($h) {
-    return response('Eu perdi ' . $h . ' horas da minha vida aprendendo Laravel sendo q nem existe mais php', 200)
-        ->header('Content-Type', 'text/plain');
-})->where('h', '[0-9]+');
-//http://localhost:8989/horas/10
+Route::get('/agendamento', [ReservaController::class, 'create'])->middleware('auth');
 
-Route::get('/search', function(Request $request) {
-    return $request->name . ' ' .$request->city;
-});
-//http://localhost:8989/search?name=nome&city=cidade
+Route::get('/reservas', [ReservaController::class, 'index'])->middleware('auth');
+
+Route::post('/reserva', [ReservaController::class, 'store'])->middleware('auth');
+
+Route::get('/reserva/{id}/edit', [ReservaController::class, 'edit'])->middleware('auth');
+
+Route::get('/reserva/{id}/negar', [ReservaController::class, 'negar'])->middleware('auth');
+
+Route::get('/reserva/{id}/aceitar', [ReservaController::class, 'aceitar'])->middleware('auth');
+
+Route::put('/reserva/{id}', [ReservaController::class, 'update'])->middleware('auth');
+
+Route::delete('/reserva/{id}', [ReservaController::class, 'destroy'])->middleware('auth');
+
+Route::get('/reserva/{id}', [ReservaController::class, 'show'])->middleware('auth');
+
+
+Route::get('/login', [UserController::class, 'login'])->name('login')->middleware('guest');
+
+Route::post('/users/login', [UserController::class, 'authenticate'])->middleware('guest');
+
+Route::get('/cadastro', [UserController::class, 'create'])->middleware('guest');
+
+Route::post('/users', [UserController::class, 'store'])->middleware('guest');
+
+Route::post('/logout', [UserController::class, 'logout'])->middleware('auth');
+
+
+Route::get('/convidado/{id}', [ConvidadoController::class, 'create']);
+
+Route::post('/convidado/{id}', [ConvidadoController::class, 'store']);
+
+Route::get('/convidado/{id}/presente', [ConvidadoController::class, 'presente'])->middleware('auth');
+
+Route::get('/convidado/{id}/ausente', [ConvidadoController::class, 'ausente'])->middleware('auth');
+
+Route::delete('/convidado/{id}', [ConvidadoController::class, 'destroy'])->middleware('auth');
+
+
+Route::get('/servicos', [ServicosController::class, 'index']);
+
+Route::get('/servicos/create', [ServicosController::class, 'create'])->middleware('auth');
+
+Route::post('/servicos', [ServicosController::class, 'store'])->middleware('auth');
+
+Route::get('/servicos/edit', [ServicosController::class, 'edit'])->middleware('auth');
+
+Route::put('/servicos', [ServicosController::class, 'update'])->middleware('auth');
+
+Route::delete('/servicos/{id}', [ServicosController::class, 'destroy'])->middleware('auth');
+
+
+Route::get('/agenda', [AgendaController::class, 'index'])->middleware('auth');
+
+Route::get('/agenda/edit', [AgendaController::class, 'edit'])->middleware('auth');
+
+Route::post('/agenda', [AgendaController::class, 'show'])->middleware('auth');
+
+Route::put('/agenda', [AgendaController::class, 'update'])->middleware('auth');
+
+
+Route::get('/pesquisa', [PesquisaController::class, 'create'])->middleware('auth');
+
+Route::post('/pesquisa', [PesquisaController::class, 'store'])->middleware('auth');
+
+Route::get('/pesquisa/index', [PesquisaController::class, 'index'])->middleware('auth');
+
+
+Route::get('/recomendacoes', [RecomendacoesController::class, 'index'])->middleware('auth');
+
+Route::post('/recomendacoes', [RecomendacoesController::class, 'store'])->middleware('auth');
+
+Route::put('/recomendacoes/edit/{id}', [RecomendacoesController::class, 'update'])->middleware('auth');
+
+Route::delete('/recomendacoes/{id}', [RecomendacoesController::class, 'destroy'])->middleware('auth');
