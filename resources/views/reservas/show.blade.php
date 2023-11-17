@@ -50,9 +50,11 @@
     </div>
     <br>
     <br>
+    @role('user')
     <div class="capa">
         <p style="font-size: 25px; text-align: center; padding: 5px; margin: 5px"> Link para convidados <br><a href="/convidado/{{$reserva->id}}" target="_blank" style="color: gold"><b>Clique aqui</b></a></p>
     </div>
+    @endrole
         <div>
             <h2 style="font-size: 50px; text-align: center;">Lista de convidados presentes</h2>
             @role('ope')
@@ -111,9 +113,10 @@
                 <td>Ainda não há convidados confirmados</td>
             @endunless
         </table>
+        <br>
         @hasanyrole('admin|comerc|ope')
-        <div style="font-size: 20px; text-align: center; padding: 5px; margin: 5px">
-            <a href="/convidado/{{$reserva->id}}" target="_blank">Adicionar convidados</a>
+        <div style="text-align: center">
+            <a href="/convidado/{{$reserva->id}}" target="_blank" role="button" class="botao" style=" font-size: 20px; border-radius: 10px;">Adicionar convidado</a>
         </div>
         @endhasanyrole
     </div>
@@ -123,10 +126,15 @@
 
     <br>
     <br>
-    <form action="/reserva/{{$reserva->id}}" method="POST">
-        @csrf
-        @method('DELETE')
-        @hasanyrole('admin|comerc|user')
-        <button type="submit" class="botao">Excluir reserva</button>
-        @endhasanyrole
+    @hasanyrole('admin|comerc|user')
+        <form action="/reserva/{{$reserva->id}}" method="POST">
+            @csrf
+            @method('DELETE')
+            <div class="capa" style="padding: 0; width: 12%;">
+                <button type="submit" class="botao" style="border-radius: 10px;">Excluir reserva</button>
+            </div>
+        </form>
+        <br>
+        <br>
+    @endhasanyrole
 </x-layout>

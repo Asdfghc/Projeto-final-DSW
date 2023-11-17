@@ -13,17 +13,17 @@
 
                 <p>(O nome deve conter no mínimo 3 caracteres)</p>
                 @error('name')
-                    <p>{{ $message }}</p>
+                    <p style="color: red">Nome Invalido</p>
                 @enderror
             </div>
             <br>
             <br>
             <div class="capa">
                 <label for="email">Email</label>
-                <input type="email" name="email" value="{{old('email')}}"/>
+                <input type="text" name="email" value="{{old('email')}}"/>
 
                 @error('email')
-                    <p>Email Inválido</p>
+                    <p style="color: red">Email Inválido</p>
                 @enderror
             </div>
             <br>
@@ -34,7 +34,7 @@
 
                 <p>(A senha deve conter no mínimo 6 caracteres)</p>
                 @error('password')
-                    <p>Senha Inválida</p>
+                    <p style="color: red">Senha Inválida</p>
                 @enderror
             </div>
             <br>
@@ -44,7 +44,7 @@
                 <input type="password" name="password_confirmation"/>
 
                 @error('password_confirmation')
-                    <p>Senhas não compatíveis</p>
+                    <p style="color: red">Senhas não compatíveis</p>
                 @enderror
             </div>
             <br>

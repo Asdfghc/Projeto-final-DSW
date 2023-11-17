@@ -39,7 +39,7 @@
                 @endforeach
 
                 @error('servico')
-                    <p>{{ $message }}</p>
+                    <p style="color: red" >Serviço Invalido</p>
                 @enderror
             </div>
             <br>

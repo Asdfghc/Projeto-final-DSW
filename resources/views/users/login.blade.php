@@ -7,10 +7,10 @@
 
         <div class="capa">
             <label for="email">Email</label>
-            <input type="email" name="email" value="{{old('email')}}"/>
+            <input type="text" name="email" value="{{old('email')}}"/>
 
             @error('email')
-                <p>Email Inválido</p>
+                <p style="color: red">Email ou Senha Inválidos</p>
             @enderror
         </div>
 
@@ -19,10 +19,6 @@
         <div class="capa">
             <label for="password">Senha</label>
             <input type="password" name="password" value="{{old('password')}}"/>
-
-            @error('password')
-                <p>Senha Inválida</p>
-            @enderror
         </div>
 
         <br>

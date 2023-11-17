@@ -85,13 +85,6 @@
       background-color: #0E0073;
       border-radius: 25px;
     }
-    ul.myUL2 {
-      display: inline-block;
-      position: absolute;
-      top: 60%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
   </style>
   @unlessrole('admin|comerc|ope')
   <br>

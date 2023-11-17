@@ -16,6 +16,9 @@
             let clone = conv.cloneNode(true);
             
             clone.querySelector('.titulo').textContent = `Convidado ${n}`;
+            clone.querySelector('.capa input[name="name1"]').value = '';
+            clone.querySelector('.capa input[name="idade1"]').value = '';
+            clone.querySelector('.capa input[name="CPF1"]').value = '';
             clone.querySelector('.capa input[name="name1"]').name = `name${n}`;
             clone.querySelector('.capa input[name="idade1"]').name = `idade${n}`;
             clone.querySelector('.capa input[name="CPF1"]').name = `CPF${n}`;
@@ -41,7 +44,7 @@
                     <input type="text" name="name1" placeholder="Nome" value="{{old('name1')}}"/>
 
                     @error('name1')
-                        <p>Nome Inválido</p>
+                        <p style="color: red">Nome Inválido</p>
                     @enderror
                 </div>
                 <br>
@@ -52,7 +55,7 @@
                     <input type="number" step="1" name="idade1" max="100" min="0" value="{{old('idade1')}}"/>
 
                     @error('idade1')
-                        <p>Idade Inválida</p>
+                        <p style="color: red">Idade Inválida</p>
                     @enderror
                 </div>
                 <br>
@@ -64,7 +67,7 @@
                 OnKeyPress="formatar('###.###.###-##',this)" value="{{old('CPF1')}}"/>
 
                     @error('CPF1')
-                        <p>CPF Inválido</p>
+                        <p style="color: red">CPF Inválido</p>
                     @enderror
                 </div>
                 <br>

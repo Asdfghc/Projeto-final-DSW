@@ -22,7 +22,7 @@
                 </select>
 
                 @error('pergunta1')
-                    <p>Escolha uma dass possiveis notas</p>
+                    <p style="color: red">Escolha uma dass possiveis notas</p>
                 @enderror
             </div>
             <br>
@@ -45,7 +45,7 @@
                 </select>
 
                 @error('pergunta2')
-                    <p>Escolha uma dass possiveis notas</p>
+                    <p style="color: red">Escolha uma dass possiveis notas</p>
                 @enderror
             </div>
             <br>
@@ -68,7 +68,7 @@
                 </select>
 
                 @error('pergunta3')
-                    <p>Escolha uma dass possiveis notas</p>
+                    <p style="color: red">Escolha uma dass possiveis notas</p>
                 @enderror
             </div>
             <br>
@@ -91,7 +91,7 @@
                 </select>
 
                 @error('pergunta4')
-                    <p>Escolha uma dass possiveis notas</p>
+                    <p style="color: red">Escolha uma dass possiveis notas</p>
                 @enderror
             </div>
             <br>
@@ -114,7 +114,7 @@
                 </select>
 
                 @error('pergunta5')
-                    <p>Escolha uma dass possiveis notas</p>
+                    <p style="color: red">Escolha uma dass possiveis notas</p>
                 @enderror
             </div>
             <br>
@@ -137,7 +137,7 @@
                 </select>
 
                 @error('pergunta6')
-                    <p>Escolha uma dass possiveis notas</p>
+                    <p style="color: red">Escolha uma dass possiveis notas</p>
                 @enderror
             </div>
             <br>
@@ -148,7 +148,7 @@
                 <textarea name="pergunta7" value="{{old('pergunta7')}}"></textarea>
 
                 @error('pergunta7')
-                    <p>Escolha uma dass possiveis notas</p>
+                    <p style="color: red">Escolha uma dass possiveis notas</p>
                 @enderror
             </div>
             <br>
@@ -159,7 +159,7 @@
                 <textarea name="pergunta8" value="{{old('pergunta8')}}"></textarea>
 
                 @error('pergunta8')
-                    <p>Escolha uma dass possiveis notas</p>
+                    <p style="color: red">Escolha uma dass possiveis notas</p>
                 @enderror
             </div>
             <br>

@@ -35,7 +35,9 @@ class ConvidadoController extends Controller
             Convidado::create($input);
             $i++;
         }
-        
+        if($i==1){
+            return redirect()->back()->with('erro', 'Convidado Inválido');
+        }
         return redirect()->back()->with('mensagem', 'Convidado cadastrado com sucesso!');
     }
 

@@ -16,13 +16,17 @@
         <p>Valor: R$ {{ $servico->valor }} por convidado</p>
     </div>
     <br>
-    <div class="capa">
+    @hasanyrole('admin|comerc')
+    <div class="capa" style="padding: 0; width: 12%;">
         <form action="/servicos/{{ $servico->id }}" method="POST">
             @csrf
             @method('delete')
-            <button type="submit" class="botao">Excluir</button>
+            <div>
+                <button type="submit" class="botao" style="border-radius: 10px;">Excluir</button>
+            </div>
         </form>
     </div>
+    @endhasanyrole
     <br>
     <br>
     @endforeach
