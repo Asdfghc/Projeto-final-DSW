@@ -1,16 +1,17 @@
 # Projeto final de Desenvolvimento de Sistemas Web
 
 Integrantes:
--Felipe Pires Leonardi 23013506
--Lucas Camargo Teixeira 23011315
--Lucas Henrique Meng 23003677
--Vitor Dourado Pinheiro 23012787
--Rafael Monezi Prado 23005030
+- Felipe Pires Leonardi 23013506
+- Lucas Camargo Teixeira 23011315
+- Lucas Henrique Meng 23003677
+- Vitor Dourado Pinheiro 23012787
+- Rafael Monezi Prado 23005030
+
 
 Links úteis:
--Docs com a documentação dos commits: https://docs.google.com/document/d/1HaD3h8IGkjj9hyNrZJrH8HB6fVgW_5B9nL1udtAIgUs/edit?usp=sharing
--Trello: https://trello.com/b/cGSYYFAj/pi-web
--Canva: https://www.canva.com/design/DAFwxNQ1L9g/3ybT6Qj5iSQMurFolQ6z_g/view?utm_content=DAFwxNQ1L9g&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink
+- Docs com a documentação dos commits: https://docs.google.com/document/d/1HaD3h8IGkjj9hyNrZJrH8HB6fVgW_5B9nL1udtAIgUs/edit?usp=sharing
+- Trello: https://trello.com/b/cGSYYFAj/pi-web
+- Canva: https://www.canva.com/design/DAFwxNQ1L9g/3ybT6Qj5iSQMurFolQ6z_g/view?utm_content=DAFwxNQ1L9g&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink
 
 Projeto final para o curso PI: Desenvolvimento de Sistemas Web da PUC-Campinas 2023
 
